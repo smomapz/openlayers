@@ -55,10 +55,6 @@ class FileSearch extends Control {
       target: opt_options.target,
     });
 
-    /**
-     * @private
-     * @type {FileSearchOptions}
-     */
     const options = opt_options ? opt_options : {};
 
     /**
