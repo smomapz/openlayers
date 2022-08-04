@@ -45,6 +45,7 @@
     "url": "https://opencollective.com/openlayers"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.7.1",
     "geotiff": "2.0.4",
     "ol-mapbox-style": "^8.0.5",
     "pbf": "3.2.1",

@@ -1,0 +1,2564 @@
+{
+    "results": [
+        {
+            "name": "Köhler-Köpfchen - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82070289699814,
+                    49.7966024812968
+                ]
+            }
+        },
+        {
+            "name": "Sonnenberg - Roxheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79988417591086,
+                    49.8596341898367
+                ]
+            }
+        },
+        {
+            "name": "Rosenteich - Guldental, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.86713126837136,
+                    49.8927638224304
+                ]
+            }
+        },
+        {
+            "name": "Feuerberg - Duchroth, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72905731860502,
+                    49.790258575451
+                ]
+            }
+        },
+        {
+            "name": "Steinberg - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85292224579055,
+                    49.8672990669036
+                ]
+            }
+        },
+        {
+            "name": "Steinkreuz - Sankt Katharinen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75991157377063,
+                    49.8661373878927
+                ]
+            }
+        },
+        {
+            "name": "Krötenpfuhl - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85667601181743,
+                    49.8526866401647
+                ]
+            }
+        },
+        {
+            "name": "Katergrube - Weinsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76389369908772,
+                    49.8416468066177
+                ]
+            }
+        },
+        {
+            "name": "Feuersteinrossel - Oberndorf, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82072533289498,
+                    49.7023623516853
+                ]
+            }
+        },
+        {
+            "name": "Onkelchen - Norheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80844559440214,
+                    49.8130692514656
+                ]
+            }
+        },
+        {
+            "name": "Kirchberg - Waldböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72198125781558,
+                    49.816688188607
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Obermoschel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78141830000368,
+                    49.7244831324586
+                ]
+            }
+        },
+        {
+            "name": "Steinchen - Langenlonsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88340035361455,
+                    49.8998968300499
+                ]
+            }
+        },
+        {
+            "name": "In den siebzehn Morgen - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85574340764398,
+                    49.8773478027634
+                ]
+            }
+        },
+        {
+            "name": "Mönchberg - Hüffelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79296879357254,
+                    49.8169799183597
+                ]
+            }
+        },
+        {
+            "name": "Aspenberg - Oberndorf, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82848860048875,
+                    49.7023204118631
+                ]
+            }
+        },
+        {
+            "name": "Heiligenberg - Weiler b. Monzingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.56471399945609,
+                    49.8070177242937
+                ]
+            }
+        },
+        {
+            "name": "Rosenberg - Monzingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.59510799073047,
+                    49.8074481546169
+                ]
+            }
+        },
+        {
+            "name": "Kapellenberg - Odernheim am Glan, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.70767278415029,
+                    49.7627076947836
+                ]
+            }
+        },
+        {
+            "name": "Königsgarten - Feilbingert, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77830496117833,
+                    49.7762264288315
+                ]
+            }
+        },
+        {
+            "name": "Kapellenberg - Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88564636552324,
+                    49.9478674347086
+                ]
+            }
+        },
+        {
+            "name": "Königsschloß - Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87607797638501,
+                    49.9392105852856
+                ]
+            }
+        },
+        {
+            "name": "Mühlberg - Schloßböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74404678383966,
+                    49.8130905159137
+                ]
+            }
+        },
+        {
+            "name": "Schloß Gutenburg - Gutenberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7988686363339,
+                    49.8819255161818
+                ]
+            }
+        },
+        {
+            "name": "Nonnengarten - Traisen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8096250947128,
+                    49.8183887341389
+                ]
+            }
+        },
+        {
+            "name": "Rotenberg - Duchroth, Oberhausen an der Nahe, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74797705244534,
+                    49.7789853169282
+                ]
+            }
+        },
+        {
+            "name": "Langenberg - Odernheim am Glan, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.71849945486151,
+                    49.7619122069412
+                ]
+            }
+        },
+        {
+            "name": "Edelberg - Lauschied, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.62112700099784,
+                    49.7563194181742
+                ]
+            }
+        },
+        {
+            "name": "Osterhöll - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83251562272017,
+                    49.8503630461539
+                ]
+            }
+        },
+        {
+            "name": "Laurentiusberg - Wallhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75770387235445,
+                    49.8860891468793
+                ]
+            }
+        },
+        {
+            "name": "Herrenzehntel - Merxheim, Simmertal, Weiler b. Monzingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.55072649240865,
+                    49.8048581987696
+                ]
+            }
+        },
+        {
+            "name": "Sonnenberg - Bad Sobernheim, Nußbaum, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.61850446877205,
+                    49.7992807941654
+                ]
+            }
+        },
+        {
+            "name": "Honigberg - Guldental, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8363403858517,
+                    49.8848939129927
+                ]
+            }
+        },
+        {
+            "name": "Rosenberg - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89592000993343,
+                    49.837204129989
+                ]
+            }
+        },
+        {
+            "name": "Birkenberg - Roxheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8105154023501,
+                    49.8671761292098
+                ]
+            }
+        },
+        {
+            "name": "Kickelskopf - Traisen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8236495919939,
+                    49.8202982309068
+                ]
+            }
+        },
+        {
+            "name": "Hermannsberg - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76098122373589,
+                    49.7948826994968
+                ]
+            }
+        },
+        {
+            "name": "Götzenfels - Norheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82345822515893,
+                    49.8158526359992
+                ]
+            }
+        },
+        {
+            "name": "Sonnenplätzchen - Obermoschel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75330201205345,
+                    49.7292077145172
+                ]
+            }
+        },
+        {
+            "name": "Langhölle - Obermoschel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7634185938885,
+                    49.7395574286249
+                ]
+            }
+        },
+        {
+            "name": "Johannisberg - Wallhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76593985472675,
+                    49.8911224511432
+                ]
+            }
+        },
+        {
+            "name": "Pfaffenpfad - Alsenz, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80443504868022,
+                    49.7162177486823
+                ]
+            }
+        },
+        {
+            "name": "Elkersberg - Alsenz, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81875384791,
+                    49.7335231361089
+                ]
+            }
+        },
+        {
+            "name": "Kaiserberg - Duchroth, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.73668153979239,
+                    49.7901713972909
+                ]
+            }
+        },
+        {
+            "name": "Bastei - Traisen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83263727257468,
+                    49.8166925021646
+                ]
+            }
+        },
+        {
+            "name": "Graukatz - Kalkofen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84018677647322,
+                    49.7343411797396
+                ]
+            }
+        },
+        {
+            "name": "Kieselberg - Oberhausen an der Nahe, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75030239792159,
+                    49.7906964474516
+                ]
+            }
+        },
+        {
+            "name": "Backöfchen - Wallhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78116848508336,
+                    49.8800229540772
+                ]
+            }
+        },
+        {
+            "name": "Rotenfels - Traisen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81848847242317,
+                    49.8178317355717
+                ]
+            }
+        },
+        {
+            "name": "Höllenpfad - Roxheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79612557974203,
+                    49.8691308183621
+                ]
+            }
+        },
+        {
+            "name": "Herrenberg - Staudernheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.71153696033045,
+                    49.7855575299092
+                ]
+            }
+        },
+        {
+            "name": "Felsensteyer - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78619060249532,
+                    49.8109710092633
+                ]
+            }
+        },
+        {
+            "name": "Apostelberg - Guldental, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83695826082304,
+                    49.904903342214
+                ]
+            }
+        },
+        {
+            "name": "Wiesberg - Rüdesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82215561696873,
+                    49.8489377696624
+                ]
+            }
+        },
+        {
+            "name": "Pfingstweide - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7890192123012,
+                    49.8117182337218
+                ]
+            }
+        },
+        {
+            "name": "Rossel - Waldalgesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81982105267247,
+                    49.9371482121055
+                ]
+            }
+        },
+        {
+            "name": "Burgberg - Dorsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88274659323988,
+                    49.9323097358188
+                ]
+            }
+        },
+        {
+            "name": "Paradies - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.92728844385603,
+                    49.8532636094783
+                ]
+            }
+        },
+        {
+            "name": "Schäfersley - Schöneberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7717426848727,
+                    49.921386025111
+                ]
+            }
+        },
+        {
+            "name": "Abtei - Sponheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.73730732451295,
+                    49.8392307623126
+                ]
+            }
+        },
+        {
+            "name": "Steinköpfchen - Rümmelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85552933162328,
+                    49.939789295905
+                ]
+            }
+        },
+        {
+            "name": "Beutelstein - Oberndorf, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81789766459988,
+                    49.7014160436518
+                ]
+            }
+        },
+        {
+            "name": "Schloßgarten - Schweppenhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80268168385417,
+                    49.9225898282781
+                ]
+            }
+        },
+        {
+            "name": "Steyerberg - Schweppenhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78602697911018,
+                    49.9196416314288
+                ]
+            }
+        },
+        {
+            "name": "Fuchsen - Laubenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88357561433699,
+                    49.9211550779384
+                ]
+            }
+        },
+        {
+            "name": "Altenburg - Waldlaubersheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83749388546977,
+                    49.9319051549322
+                ]
+            }
+        },
+        {
+            "name": "Marienpforter Klosterberg - Waldböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.67625272699553,
+                    49.8109248371835
+                ]
+            }
+        },
+        {
+            "name": "Sonnenberg - Hergenfeld, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7695404468623,
+                    49.9025828623347
+                ]
+            }
+        },
+        {
+            "name": "Fels - Windesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82723831627928,
+                    49.9073200636575
+                ]
+            }
+        },
+        {
+            "name": "Mönchberg - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85737414203201,
+                    49.8659054643838
+                ]
+            }
+        },
+        {
+            "name": "Sonnenberg - Dalberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.73695491025645,
+                    49.8925814403854
+                ]
+            }
+        },
+        {
+            "name": "Rheingasse - Lettweiler, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72060920473778,
+                    49.733120568286
+                ]
+            }
+        },
+        {
+            "name": "Domberg - Waldlaubersheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84313317181768,
+                    49.9248254900939
+                ]
+            }
+        },
+        {
+            "name": "Lieseberg - Waldlaubersheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82564784772905,
+                    49.9358888088745
+                ]
+            }
+        },
+        {
+            "name": "Kronenfels - Waldböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.71578138598291,
+                    49.8212344333411
+                ]
+            }
+        },
+        {
+            "name": "Johannisberg - Rümmelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8448907833205,
+                    49.9365659496001
+                ]
+            }
+        },
+        {
+            "name": "Vogelschlag - Duchroth, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72992041095694,
+                    49.7860493230424
+                ]
+            }
+        },
+        {
+            "name": "Pastorei - Bretzenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87755392658254,
+                    49.878146057898
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Dalberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.73261670725009,
+                    49.8992731904278
+                ]
+            }
+        },
+        {
+            "name": "Hölle - Rümmelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85429490870141,
+                    49.9367187149632
+                ]
+            }
+        },
+        {
+            "name": "Hipperich - Guldental, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.86951390777141,
+                    49.8964382916971
+                ]
+            }
+        },
+        {
+            "name": "Felsenberg - Eckenroth, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78971537119625,
+                    49.9238617753685
+                ]
+            }
+        },
+        {
+            "name": "Hörnchen - Laubenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88104979691901,
+                    49.9169404831786
+                ]
+            }
+        },
+        {
+            "name": "Felseneck - Gutenberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80883944012318,
+                    49.8761935004364
+                ]
+            }
+        },
+        {
+            "name": "Karthäuser - Laubenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89291919791863,
+                    49.9260787238702
+                ]
+            }
+        },
+        {
+            "name": "Römerberg - Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88893856169489,
+                    49.9535910102044
+                ]
+            }
+        },
+        {
+            "name": "Stephansberg - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82382603478111,
+                    49.8001810687765
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83455668320022,
+                    49.8043832636564
+                ]
+            }
+        },
+        {
+            "name": "Kauzenberg - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84703030217315,
+                    49.8394778058183
+                ]
+            }
+        },
+        {
+            "name": "Ritterhölle - Dalberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7384834073201,
+                    49.8974638482038
+                ]
+            }
+        },
+        {
+            "name": "St. Martin - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.86326818869519,
+                    49.858377619319
+                ]
+            }
+        },
+        {
+            "name": "Steinkaut - Weinsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74876443992866,
+                    49.8369839564193
+                ]
+            }
+        },
+        {
+            "name": "Kahlenberg - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84607636684357,
+                    49.8513070137873
+                ]
+            }
+        },
+        {
+            "name": "Berg - Roxheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77975651952524,
+                    49.8745919974249
+                ]
+            }
+        },
+        {
+            "name": "Erzgrube - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83278546492843,
+                    49.8030072326682
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Martinstein, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.54191347881666,
+                    49.8046652689898
+                ]
+            }
+        },
+        {
+            "name": "Katzenhölle - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.92618930701448,
+                    49.8647294124423
+                ]
+            }
+        },
+        {
+            "name": "Berg - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.86566168983333,
+                    49.8760285464977
+                ]
+            }
+        },
+        {
+            "name": "Narrenkappe - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84919236190187,
+                    49.8648620494455
+                ]
+            }
+        },
+        {
+            "name": "Alte Römerstraße - Mandel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77227560561678,
+                    49.8619180495455
+                ]
+            }
+        },
+        {
+            "name": "Dellchen - Mandel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7865259734333,
+                    49.8567584228088
+                ]
+            }
+        },
+        {
+            "name": "Nonnengarten - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.93214794285009,
+                    49.8605030956132
+                ]
+            }
+        },
+        {
+            "name": "Palmengarten - Mandel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77391933204706,
+                    49.849501582507
+                ]
+            }
+        },
+        {
+            "name": "Dellchen - Norheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8000571229494,
+                    49.8115502386259
+                ]
+            }
+        },
+        {
+            "name": "Kafels - Norheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79552439582885,
+                    49.8126298769164
+                ]
+            }
+        },
+        {
+            "name": "Höll - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84038784530374,
+                    49.8130196003834
+                ]
+            }
+        },
+        {
+            "name": "Obere Heimbach - Meisenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.65229168301028,
+                    49.7149446477976
+                ]
+            }
+        },
+        {
+            "name": "Brücke - Oberhausen an der Nahe, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7595636046781,
+                    49.794188161988
+                ]
+            }
+        },
+        {
+            "name": "Hunolsteiner - Merxheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.56487611558374,
+                    49.7871157097271
+                ]
+            }
+        },
+        {
+            "name": "Römerberg - Merxheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.55247314653059,
+                    49.7844878949773
+                ]
+            }
+        },
+        {
+            "name": "Herrschaftsgarten - Hergenfeld, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76359288497776,
+                    49.9018267810754
+                ]
+            }
+        },
+        {
+            "name": "Rothenberg - Rümmelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85578632407109,
+                    49.9283384823474
+                ]
+            }
+        },
+        {
+            "name": "Mönchberg - Hergenfeld, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76264779582793,
+                    49.9028525599573
+                ]
+            }
+        },
+        {
+            "name": "Klostergarten - Sankt Katharinen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77180066177872,
+                    49.8715294430056
+                ]
+            }
+        },
+        {
+            "name": "Rosenberg - Mannweiler-Cölln, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79477662075057,
+                    49.6855452091752
+                ]
+            }
+        },
+        {
+            "name": "Klostergarten - Sponheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72379570919134,
+                    49.8473896154818
+                ]
+            }
+        },
+        {
+            "name": "Klosterberg - Norheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79959263709956,
+                    49.8146162484151
+                ]
+            }
+        },
+        {
+            "name": "Luisengarten - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81931720207292,
+                    49.8033216560936
+                ]
+            }
+        },
+        {
+            "name": "Inkelhöll - Lettweiler, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.71927851903924,
+                    49.7293595283819
+                ]
+            }
+        },
+        {
+            "name": "Frühlingsplätzchen - Monzingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.5842856882222,
+                    49.7998830422438
+                ]
+            }
+        },
+        {
+            "name": "Seidenberg - Mannweiler-Cölln, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79832411832639,
+                    49.6904127818479
+                ]
+            }
+        },
+        {
+            "name": "Höchstes Kreuz - Feilbingert, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81563306090434,
+                    49.7690556452725
+                ]
+            }
+        },
+        {
+            "name": "Heimberg - Schloßböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72661285060646,
+                    49.8084733560781
+                ]
+            }
+        },
+        {
+            "name": "Fels - Sankt Katharinen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76126803768767,
+                    49.8717329240624
+                ]
+            }
+        },
+        {
+            "name": "Grafenberg - Sponheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.73037059359918,
+                    49.8351371005905
+                ]
+            }
+        },
+        {
+            "name": "Kaulenberg - Auen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.58600963139411,
+                    49.8300278342688
+                ]
+            }
+        },
+        {
+            "name": "Kellerberg - Weinsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74318734958417,
+                    49.8350313543736
+                ]
+            }
+        },
+        {
+            "name": "Stollenberg - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79091572257806,
+                    49.7870786686887
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Rümmelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.86616422816103,
+                    49.9336183187233
+                ]
+            }
+        },
+        {
+            "name": "Vogelsang - Merxheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.54223742328591,
+                    49.7914354959064
+                ]
+            }
+        },
+        {
+            "name": "Würzhölle - Unkenbach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.73767173329775,
+                    49.7180765727122
+                ]
+            }
+        },
+        {
+            "name": "Steyer - Hüffelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79070033670431,
+                    49.8146973856107
+                ]
+            }
+        },
+        {
+            "name": "Jungbrunnen - Dorsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87891869888682,
+                    49.9283843742844
+                ]
+            }
+        },
+        {
+            "name": "Klosterpfad - Dorsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8655156438378,
+                    49.9246242145361
+                ]
+            }
+        },
+        {
+            "name": "Pittermännchen - Dorsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87065322674743,
+                    49.9326841331249
+                ]
+            }
+        },
+        {
+            "name": "Trollberg - Dorsheim, Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88336259016924,
+                    49.9311183538757
+                ]
+            }
+        },
+        {
+            "name": "Goldloch - Dorsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87643428140835,
+                    49.9324045459408
+                ]
+            }
+        },
+        {
+            "name": "Straußberg - Hargesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82952904453312,
+                    49.8707359771444
+                ]
+            }
+        },
+        {
+            "name": "Auf dem Zimmerberg - Oberstreit, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.69527904748103,
+                    49.797857657719
+                ]
+            }
+        },
+        {
+            "name": "Montfort - Odernheim am Glan, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.71301549343715,
+                    49.7674534102467
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Raumbach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.65786302044494,
+                    49.7251806080232
+                ]
+            }
+        },
+        {
+            "name": "Mühlberg - Waldböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.71944752730342,
+                    49.8086963539944
+                ]
+            }
+        },
+        {
+            "name": "Treuenfels - Altenbamberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83512370422004,
+                    49.7825277373037
+                ]
+            }
+        },
+        {
+            "name": "Sonnenmorgen - Windesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81177378563973,
+                    49.9119428037777
+                ]
+            }
+        },
+        {
+            "name": "Königsschild - Langenlonsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88571413976303,
+                    49.9033982792443
+                ]
+            }
+        },
+        {
+            "name": "Steigerdell - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.83889177059118,
+                    49.8134438074343
+                ]
+            }
+        },
+        {
+            "name": "Löhrer Berg - Langenlonsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8847426088939,
+                    49.9108104481019
+                ]
+            }
+        },
+        {
+            "name": "Halenberg - Monzingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.59827391346048,
+                    49.7929470829327
+                ]
+            }
+        },
+        {
+            "name": "Rothenberg - Langenlonsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87609589858626,
+                    49.9037517637451
+                ]
+            }
+        },
+        {
+            "name": "Herrenberg - Rehborn, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.70426089684449,
+                    49.735436470251
+                ]
+            }
+        },
+        {
+            "name": "Kahlenberg - Feilbingert, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80321260176687,
+                    49.7838622642426
+                ]
+            }
+        },
+        {
+            "name": "Kehrenberg - Altenbamberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84296976430219,
+                    49.7811328137264
+                ]
+            }
+        },
+        {
+            "name": "Kloster Disibodenberg - Odernheim am Glan, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.70141631118796,
+                    49.7753170008629
+                ]
+            }
+        },
+        {
+            "name": "Höllenpfad - Wallhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7681281359237,
+                    49.8952311745677
+                ]
+            }
+        },
+        {
+            "name": "Bocksberg - Feilbingert, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78332736676679,
+                    49.7830198338687
+                ]
+            }
+        },
+        {
+            "name": "Heßweg - Odernheim am Glan, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.70921087681376,
+                    49.7659814791979
+                ]
+            }
+        },
+        {
+            "name": "Sonnenberg - Schöneberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76336431960822,
+                    49.9196078651911
+                ]
+            }
+        },
+        {
+            "name": "Birkenberg - Sommerloch, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74599672187544,
+                    49.8792398823004
+                ]
+            }
+        },
+        {
+            "name": "Junker - Laubenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89080535324131,
+                    49.9172663904693
+                ]
+            }
+        },
+        {
+            "name": "Ratsgrund - Sommerloch, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76646833098577,
+                    49.8785880667435
+                ]
+            }
+        },
+        {
+            "name": "Steinrossel - Sommerloch, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75260570311349,
+                    49.8786890820002
+                ]
+            }
+        },
+        {
+            "name": "Kirschheck - Norheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80505647426351,
+                    49.81096576764
+                ]
+            }
+        },
+        {
+            "name": "Rotfeld - Nußbaum, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.61136235860672,
+                    49.7943942886521
+                ]
+            }
+        },
+        {
+            "name": "Liebesbrunnen - Hochstätten, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82794598980091,
+                    49.7672155514382
+                ]
+            }
+        },
+        {
+            "name": "Altenberg - Meddersheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.5975416660898,
+                    49.7724122897391
+                ]
+            }
+        },
+        {
+            "name": "Edelberg - Meddersheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.62633564795608,
+                    49.769146980497
+                ]
+            }
+        },
+        {
+            "name": "Rheingrafenberg - Meddersheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.5872785981018,
+                    49.7797720628992
+                ]
+            }
+        },
+        {
+            "name": "Rotenfelser im Winkel - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8413544131908,
+                    49.8145346557177
+                ]
+            }
+        },
+        {
+            "name": "Hermannshöhle - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76631187080498,
+                    49.7920607616349
+                ]
+            }
+        },
+        {
+            "name": "Kertz - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77461683378335,
+                    49.7954224000269
+                ]
+            }
+        },
+        {
+            "name": "Klamm - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77118727351221,
+                    49.7941947479794
+                ]
+            }
+        },
+        {
+            "name": "Laurentiusberg - Altenbamberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82506008681177,
+                    49.7736228680416
+                ]
+            }
+        },
+        {
+            "name": "Römerstich - Auen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.5935869509422,
+                    49.832764426016
+                ]
+            }
+        },
+        {
+            "name": "Lump - Kirschroth, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.58215166923329,
+                    49.7633421588804
+                ]
+            }
+        },
+        {
+            "name": "Wildgrafenberg - Kirschroth, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.56821698926256,
+                    49.7599969904884
+                ]
+            }
+        },
+        {
+            "name": "Pastorenberg - Wallhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78200974867353,
+                    49.8901121325039
+                ]
+            }
+        },
+        {
+            "name": "Pfaffenstein - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77185041831212,
+                    49.8021238051363
+                ]
+            }
+        },
+        {
+            "name": "Rotenberg - Altenbamberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82331850686724,
+                    49.7839436688851
+                ]
+            }
+        },
+        {
+            "name": "Rosenberg - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78122254640587,
+                    49.8078272272914
+                ]
+            }
+        },
+        {
+            "name": "Hölle - Eckenroth, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78202795455116,
+                    49.9234066527205
+                ]
+            }
+        },
+        {
+            "name": "Felseneck - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84836080438834,
+                    49.8176305317455
+                ]
+            }
+        },
+        {
+            "name": "Krone - Laubenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89323220599176,
+                    49.9128511061642
+                ]
+            }
+        },
+        {
+            "name": "St. Remigiusberg - Laubenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8906684524307,
+                    49.9226877228071
+                ]
+            }
+        },
+        {
+            "name": "Vogelsang - Laubenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8852640896484,
+                    49.9248976526128
+                ]
+            }
+        },
+        {
+            "name": "Dautenpflänzer - Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89004645105654,
+                    49.948408026582
+                ]
+            }
+        },
+        {
+            "name": "Liebehöll - Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89096117048264,
+                    49.9365532454304
+                ]
+            }
+        },
+        {
+            "name": "In den Felsen - Schloßböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72799236704627,
+                    49.805985869433
+                ]
+            }
+        },
+        {
+            "name": "Pittersberg - Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8851925915312,
+                    49.9422025533169
+                ]
+            }
+        },
+        {
+            "name": "Kupfergrube - Schloßböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75905143637656,
+                    49.7983215818649
+                ]
+            }
+        },
+        {
+            "name": "Rheinberg - Münster-Sarmsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89480991084364,
+                    49.9526541560787
+                ]
+            }
+        },
+        {
+            "name": "Römerhelde - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.92154840757119,
+                    49.869506474346
+                ]
+            }
+        },
+        {
+            "name": "Rosenheck - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8713331605515,
+                    49.8774879072021
+                ]
+            }
+        },
+        {
+            "name": "Hildegardisbrünnchen - Bingen am Rhein, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87888443462351,
+                    49.9664740227606
+                ]
+            }
+        },
+        {
+            "name": "Mollenbrunnen - Hargesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82935921926537,
+                    49.8560453534939
+                ]
+            }
+        },
+        {
+            "name": "Vogelsang - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84558872982104,
+                    49.861530878799
+                ]
+            }
+        },
+        {
+            "name": "Leistenberg - Oberhausen an der Nahe, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75611817349147,
+                    49.785283724735
+                ]
+            }
+        },
+        {
+            "name": "Felsenberg - Schloßböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74638676118931,
+                    49.8020399209506
+                ]
+            }
+        },
+        {
+            "name": "Felsenköpfchen - Bretzenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87982158834709,
+                    49.8858542267236
+                ]
+            }
+        },
+        {
+            "name": "Hofgut - Bretzenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.86973828463463,
+                    49.8819226805491
+                ]
+            }
+        },
+        {
+            "name": "Vogelsang - Bretzenheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88008112084811,
+                    49.8829385798177
+                ]
+            }
+        },
+        {
+            "name": "St. Ruppertsberg - Gutenberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79536946596215,
+                    49.8849512744968
+                ]
+            }
+        },
+        {
+            "name": "Schikanenbuckel - Rehborn, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.69650642066691,
+                    49.7280004911472
+                ]
+            }
+        },
+        {
+            "name": "Himmelgarten - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.9306262718164,
+                    49.8771978455244
+                ]
+            }
+        },
+        {
+            "name": "Kapellenpfad - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85193285393423,
+                    49.8549544817116
+                ]
+            }
+        },
+        {
+            "name": "Domberg - Bad Sobernheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.64099491518705,
+                    49.7911580632661
+                ]
+            }
+        },
+        {
+            "name": "Marbach - Bad Sobernheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.62552064360565,
+                    49.7900756202574
+                ]
+            }
+        },
+        {
+            "name": "Römerberg - Gutenberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80237240076013,
+                    49.8860630367575
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Gutenberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80223782446552,
+                    49.8821212347749
+                ]
+            }
+        },
+        {
+            "name": "Graukatz - Niederhausen a.d.Appel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.89226254020898,
+                    49.7500154259513
+                ]
+            }
+        },
+        {
+            "name": "Hahnhölle - Niedermoschel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78080499452176,
+                    49.7414733259021
+                ]
+            }
+        },
+        {
+            "name": "Layenberg - Niedermoschel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80119139289459,
+                    49.734557405127
+                ]
+            }
+        },
+        {
+            "name": "Hinkelstein - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8367516566358,
+                    49.8575669261951
+                ]
+            }
+        },
+        {
+            "name": "Hofgarten - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84144118170411,
+                    49.8521806020617
+                ]
+            }
+        },
+        {
+            "name": "Honigberg - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85911870706184,
+                    49.8760121824879
+                ]
+            }
+        },
+        {
+            "name": "Hungriger Wolf - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85365021053336,
+                    49.8692402450916
+                ]
+            }
+        },
+        {
+            "name": "Junker - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.92811545270346,
+                    49.8738782199978
+                ]
+            }
+        },
+        {
+            "name": "Michaeliskapelle - Braunweiler, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75235747574711,
+                    49.8723219118907
+                ]
+            }
+        },
+        {
+            "name": "Wetterkreuz - Braunweiler, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.73936904232929,
+                    49.8701565178909
+                ]
+            }
+        },
+        {
+            "name": "Höllenpfad - Burgsponheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.70548342155337,
+                    49.833140733198
+                ]
+            }
+        },
+        {
+            "name": "Gutenhölle - Hüffelsheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.78435292185776,
+                    49.8148210732434
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Altenbamberg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.85659489440891,
+                    49.7850482059717
+                ]
+            }
+        },
+        {
+            "name": "Götzenfels - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82409699427095,
+                    49.810358059376
+                ]
+            }
+        },
+        {
+            "name": "Brückes - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87154900293284,
+                    49.8590393409757
+                ]
+            }
+        },
+        {
+            "name": "Gutental - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.86227844614423,
+                    49.8622047663998
+                ]
+            }
+        },
+        {
+            "name": "Otterberg - Waldlaubersheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.80441537984176,
+                    49.9312254620795
+                ]
+            }
+        },
+        {
+            "name": "Römerberg - Windesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.82711988926091,
+                    49.9112068779697
+                ]
+            }
+        },
+        {
+            "name": "Rosenberg - Windesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8011869995973,
+                    49.9017401439283
+                ]
+            }
+        },
+        {
+            "name": "Sonnenberg - Sommerloch, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7556629600175,
+                    49.8811711130067
+                ]
+            }
+        },
+        {
+            "name": "Steinwingert - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77793987229371,
+                    49.797812982997
+                ]
+            }
+        },
+        {
+            "name": "Rosenheck - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77739420359756,
+                    49.8006358030471
+                ]
+            }
+        },
+        {
+            "name": "Steinberg - Niederhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.76422157423149,
+                    49.7963025383385
+                ]
+            }
+        },
+        {
+            "name": "Feuerberg - Bad Münster-Ebernburg, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8199261631963,
+                    49.8015154268653
+                ]
+            }
+        },
+        {
+            "name": "Forst - Bad Kreuznach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.84708971492042,
+                    49.8576524028525
+                ]
+            }
+        },
+        {
+            "name": "Saukopf - Waldlaubersheim, Windesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81246189815519,
+                    49.9148537939198
+                ]
+            }
+        },
+        {
+            "name": "Mittelberg - Bayerfeld-Steckweiler, Dielkirchen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.81127108632017,
+                    49.6737828839896
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Braunweiler, Mandel, Sponheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75802889706605,
+                    49.859703469836
+                ]
+            }
+        },
+        {
+            "name": "Hahn - Rehborn, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.66837881043377,
+                    49.7340901013184
+                ]
+            }
+        },
+        {
+            "name": "Stromberg - Bockenau, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.68339524476818,
+                    49.8318888170029
+                ]
+            }
+        },
+        {
+            "name": "Felseneck - Bockenau, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.6761313329109,
+                    49.8398513489282
+                ]
+            }
+        },
+        {
+            "name": "Hellenpfad - Braunweiler, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74473945381544,
+                    49.8663065302156
+                ]
+            }
+        },
+        {
+            "name": "Graukatz - Münsterappel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.87817264344978,
+                    49.7346774935194
+                ]
+            }
+        },
+        {
+            "name": "Pfaffenberg - Burgsponheim, Sponheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.69855998371569,
+                    49.8319412084851
+                ]
+            }
+        },
+        {
+            "name": "Schloßberg - Burgsponheim, Sponheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.71553034074235,
+                    49.8351364954316
+                ]
+            }
+        },
+        {
+            "name": "Geißenkopf - Niedermoschel, Obermoschel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.77189145802561,
+                    49.7399398516204
+                ]
+            }
+        },
+        {
+            "name": "Klostergarten - Bingen am Rhein, Weiler bei Bingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88006825930232,
+                    49.9601495977491
+                ]
+            }
+        },
+        {
+            "name": "Römerberg - Bingen am Rhein, Weiler bei Bingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88495506314821,
+                    49.9570674826244
+                ]
+            }
+        },
+        {
+            "name": "Schwalbennest - Meisenheim, Raumbach, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.6636802557253,
+                    49.7263561184906
+                ]
+            }
+        },
+        {
+            "name": "Johannesberg - Bad Sobernheim, Waldböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.66746357166819,
+                    49.8088126986512
+                ]
+            }
+        },
+        {
+            "name": "Goldgrube - Hüffelsheim, Rüdesheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.79236736814136,
+                    49.8444473948055
+                ]
+            }
+        },
+        {
+            "name": "Abtei Rupertsberg - Bingen am Rhein, Weiler bei Bingen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.88197654783818,
+                    49.958766973432
+                ]
+            }
+        },
+        {
+            "name": "Königsfels - Schloßböckelheim, Waldböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.72827053019467,
+                    49.804291895505
+                ]
+            }
+        },
+        {
+            "name": "Silberberg - Niedermoschel, Obermoschel, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.7832212238026,
+                    49.7316571254644
+                ]
+            }
+        },
+        {
+            "name": "Felsenberg - Duchroth, Oberhausen an der Nahe, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.74246625869625,
+                    49.793314012909
+                ]
+            }
+        },
+        {
+            "name": "Felseneck - Hergenfeld, Wallhausen, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.75615533341452,
+                    49.8975237692072
+                ]
+            }
+        },
+        {
+            "name": "Kastell - Boos, Waldböckelheim, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.70998208270083,
+                    49.7935226849805
+                ]
+            }
+        },
+        {
+            "name": "Sonnenberg - Guldental, Nahe",
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    7.8496278227599,
+                    49.8989834547172
+                ]
+            }
+        }
+    ]
+}
