@@ -195,7 +195,7 @@ class FileSearch extends Control {
   }
 
   /**
-   * @param {import("../../PluggableMap.js").default} map The map.
+   * @inheritDoc
    */
   setMap(map) {
     super.setMap(map);

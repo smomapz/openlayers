@@ -52,7 +52,7 @@ const map = new Map({
       source: resultSource,
       style: new Style({
         image: new Icon({
-          src: 'https://www.mapz.com:8080/mapz/mapz_redaktion/map/marker/svg/M_marker_heart_150910.svg',
+          src: 'https://www.mapz.com/mapz/mapz_redaktion/map/marker/svg/M_marker_heart_150910.svg',
           imgSize: [39.69, 39.69],
           scale: 2,
         }),
