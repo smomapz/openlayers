@@ -283,3 +283,162 @@
 .ol-overviewmap .ol-overviewmap-box:hover {
   cursor: move;
 }
+
+/* mapz */
+
+/* mapz style for controls */
+
+.ol-control,
+.ol-control:hover,
+.ol-control:focus {
+  border-radius: 2px;
+  background-color: inherit;
+}
+
+.ol-control button,
+.ol-control button:hover,
+.ol-control button:focus {
+  background-color: rgba(39, 44, 49, 0.9);
+  color: white;
+}
+
+/* mapz style for attribution */
+
+.ol-attribution,
+.ol-attribution:hover {
+  background-clip: padding-box;
+  border-radius: 4px;
+}
+
+.ol-attribution:not(.ol-collapsed) {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.ol-attribution:not(.ol-collapsed) > ul > li {
+  font-size: 11px;
+}
+
+.ol-attribution:not(.ol-collapsed) > ul > li > a {
+  color: #464646;
+  font-weight: 600;
+}
+
+.ol-attribution.ol-control button span {
+  color: #fff;
+}
+
+.ol-attribution.ol-uncollapsible {
+  margin: 0 10px 10px 0;
+  border-radius: 3px;
+  padding: 5px;
+  box-sizing: content-box;
+}
+
+.ol-attribution.ol-uncollapsible > ul {
+  padding: 0;
+}
+
+/* ol.mapz.control.Filesearch */
+
+.mapz-control-search {
+  margin: 8px;
+  width: 40%;
+}
+
+.aa-Form {
+  display: flex;
+}
+
+.aa-InputWrapperPrefix {
+  display: none;
+}
+
+.aa-InputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.aa-Input {
+  border: 0;
+  font: inherit;
+  height: 2em;
+  padding: 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  color: rgb(70 70 70);
+  padding: 0 0.5em 0 0.5em;
+}
+
+.aa-Input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.aa-Input::-webkit-search-decoration,
+.aa-Input::-webkit-search-cancel-button,
+.aa-Input::-webkit-search-results-button,
+.aa-Input::-webkit-search-results-decoration {
+-webkit-appearance: none;
+appearance: none;
+}
+
+.aa-InputWrapperSuffix {
+  align-items: center;
+  display: flex;
+  height: 2em;
+}
+
+.aa-InputWrapperSuffix .aa-ClearButton {
+  margin: 0 0 0 8px;
+}
+
+.aa-Panel {
+  margin: 8px 0 0 0;
+  background: white;
+}
+
+.aa-PanelLayout {
+  height: 100%;
+  margin: 0;
+  overflow-y: auto;
+  padding: 8px;
+  position: relative;
+  text-align: left;
+}
+
+.aa-Panel--scrollable {
+  margin: 0;
+  max-height: 30vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: white #eaeaea;
+  scrollbar-width: thin;
+}
+
+.aa-List {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.aa-Item {
+  cursor: pointer;
+  min-height: 1em;
+  padding: 0.2em;
+}
+
+/* ol.mapz.control.Geolocate */
+
+.mapz-control-geolocate {
+  top: 4em;
+  left: 0.5em;
+}
+
+button.mapz-control-geolocate-button {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgYmFzZVByb2ZpbGU9InRpbnkiIGhlaWdodD0iMjRweCIgaWQ9IkxheWVyXzEiIHZlcnNpb249IjEuMiIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjRweCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTEwLjM2OCwxOS4xMDJjMC4zNDksMS4wNDksMS4wMTEsMS4wODYsMS40NzgsMC4wODZsNS4zMDktMTEuMzc1YzAuNDY3LTEuMDAyLDAuMDM0LTEuNDM0LTAuOTY3LTAuOTY3TDQuODEyLDEyLjE1NCAgIGMtMS4wMDEsMC40NjctMC45NjMsMS4xMjksMC4wODUsMS40NzlMOSwxNUwxMC4zNjgsMTkuMTAyeiIvPjwvZz48L3N2Zz4=');
+  background-size: 1.375em;
+}
