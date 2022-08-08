@@ -1,8 +1,9 @@
-import Geolocate from '../../../../../../src/ol/mapz/control/Geolocatecontrol.js';
+import Geotracker from '../../../../../../src/ol/mapz/control/Geotracker.js';
 import Map from '../../../../../../src/ol/Map.js';
 import View from '../../../../../../src/ol/View.js';
+import {Stroke, Style} from '../../../../../../src/ol/style.js';
 
-describe('ol/mapz/control/Geolocate', function () {
+describe('ol/mapz/control/GeoTracker', function () {
   let map;
 
   beforeEach(function () {
@@ -24,10 +25,20 @@ describe('ol/mapz/control/Geolocate', function () {
     map = null;
   });
 
-  it('loads Geolocate control', function () {
+  it('loads Geotracker control', function () {
     map.renderSync();
-    const control = new Geolocate({
-      autoLocate: true,
+    const control = new Geotracker({
+      marker: {
+        src: 'http://foo.png',
+        height: 5,
+      },
+      trackStyle: new Style({
+        stroke: new Stroke({
+          width: 5,
+          color: 'rgb(0, 0, 0)',
+        }),
+      }),
+      autostart: true,
     });
     map.getControls().clear();
     map.addControl(control);

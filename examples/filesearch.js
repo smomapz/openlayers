@@ -1,4 +1,4 @@
-import FileSearch from '../src/ol/mapz/control/Filesearchcontrol.js';
+import FileSearch from '../src/ol/mapz/control/FileSearch.js';
 import Map from '../src/ol/Map.js';
 import Style from '../src/ol/style/Style.js';
 import Tile from '../src/ol/layer/Tile.js';

@@ -1,10 +1,12 @@
-import GeoTracker from '../../../../../../src/ol/mapz/control/Geotrackercontrol.js';
+import FileSearch from '../../../../../../src/ol/mapz/control/FileSearch.js';
 import Map from '../../../../../../src/ol/Map.js';
+import Vector from '../../../../../../src/ol/layer/Vector.js';
+import VectorSource from '../../../../../../src/ol/source/Vector.js';
 import View from '../../../../../../src/ol/View.js';
-import {Stroke, Style} from '../../../../../../src/ol/style.js';
 
-describe('ol/mapz/control/Geolocate', function () {
+describe('ol/mapz/control/FileSearch', function () {
   let map;
+  const resultSource = new VectorSource();
 
   beforeEach(function () {
     const target = document.createElement('div');
@@ -13,6 +15,11 @@ describe('ol/mapz/control/Geolocate', function () {
     document.body.appendChild(target);
     map = new Map({
       target: target,
+      layers: [
+        new Vector({
+          source: resultSource,
+        }),
+      ],
       view: new View({
         center: [0, 0],
         zoom: 0,
@@ -25,20 +32,10 @@ describe('ol/mapz/control/Geolocate', function () {
     map = null;
   });
 
-  it('loads Geotracker control', function () {
+  it('loads FileSearch control', function () {
     map.renderSync();
-    const control = new GeoTracker({
-      marker: {
-        src: 'http://foo.png',
-        height: 5,
-      },
-      trackStyle: new Style({
-        stroke: new Stroke({
-          width: 5,
-          color: 'rgb(0, 0, 0)',
-        }),
-      }),
-      autostart: true,
+    const control = new FileSearch({
+      resultSource: resultSource,
     });
     map.getControls().clear();
     map.addControl(control);

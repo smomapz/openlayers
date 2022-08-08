@@ -55,7 +55,8 @@ class Geolocate extends Control {
      * @private
      * @type {boolean}
      */
-    this.autoLocate = options.autoLocate ? options.autoLocate : false;
+    this.autoLocate =
+      options.autoLocate !== undefined ? options.autoLocate : false;
 
     /**
      * @private

@@ -47,9 +47,10 @@ class Geotracker extends Control {
 
     const maximumAge = options.maximumAge ? options.maximumAge : 10000;
 
-    const enableHighAccuracy = options.enableHighAccuracy
-      ? options.enableHighAccuracy
-      : true;
+    const enableHighAccuracy =
+      options.enableHighAccuracy !== undefined
+        ? options.enableHighAccuracy
+        : true;
 
     const timeout = options.timeout ? options.timeout : 600000;
 
@@ -97,13 +98,14 @@ class Geotracker extends Control {
      * @private
      * @type {boolean}
      */
-    this.autostart_ = options.autostart ? options.autostart : false;
+    this.autostart_ =
+      options.autostart !== undefined ? options.autostart : false;
 
     /**
      * @private
      * @type {boolean}
      */
-    this.rotate_ = options.rotate ? options.rotate : false;
+    this.rotate_ = options.rotate !== undefined ? options.rotate : false;
 
     /**
      * @private
@@ -150,41 +152,42 @@ class Geotracker extends Control {
    */
   setMap(map) {
     super.setMap(map);
-    if (map) {
-      if (this.marker_) {
-        map.addOverlay(this.marker_);
-      }
-      this.geolocation_ = new Geolocation({
-        projection: map.getView().getProjection(),
-        trackingOptions: this.trackingOptions_,
-      });
-      const self = this;
-      this.geolocation_.on('change', function () {
-        const position = self.geolocation_.getPosition();
-        const heading = self.geolocation_.getHeading() || 0;
-        // add timestamp
-        const m = Date.now();
-        self.addPosition_(position, heading, m);
+    if (!map) {
+      return;
+    }
+    if (this.marker_) {
+      map.addOverlay(this.marker_);
+    }
+    this.geolocation_ = new Geolocation({
+      projection: map.getView().getProjection(),
+      trackingOptions: this.trackingOptions_,
+    });
+    const _this = this;
+    this.geolocation_.on('change', function () {
+      const position = _this.geolocation_.getPosition();
+      const heading = _this.geolocation_.getHeading() || 0;
+      // add timestamp
+      const m = Date.now();
+      _this.addPosition_(position, heading, m);
 
-        const coords = self.positions_.getCoordinates();
-        const len = coords.length;
-        if (len >= 2) {
-          self.deltaMean_ = (coords[len - 1][3] - coords[0][3]) / (len - 1);
-        }
-        self.mapFollow_();
-      });
-      if (this.trackSource_) {
-        map.addLayer(
-          new Vector({
-            style: this.trackStyle_,
-            source: this.trackSource_,
-          })
-        );
+      const coords = _this.positions_.getCoordinates();
+      const len = coords.length;
+      if (len >= 2) {
+        _this.deltaMean_ = (coords[len - 1][3] - coords[0][3]) / (len - 1);
       }
+      _this.mapFollow_();
+    });
+    if (this.trackSource_) {
+      map.addLayer(
+        new Vector({
+          style: this.trackStyle_,
+          source: this.trackSource_,
+        })
+      );
+    }
 
-      if (this.autostart_ === true) {
-        this.startTracking_();
-      }
+    if (this.autostart_ === true) {
+      this.startTracking_();
     }
   }
 

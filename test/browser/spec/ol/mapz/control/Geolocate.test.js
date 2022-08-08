@@ -1,12 +1,9 @@
-import FileSearch from '../../../../../../src/ol/mapz/control/Filesearchcontrol.js';
+import Geolocate from '../../../../../../src/ol/mapz/control/Geolocate.js';
 import Map from '../../../../../../src/ol/Map.js';
-import Vector from '../../../../../../src/ol/layer/Vector.js';
-import VectorSource from '../../../../../../src/ol/source/Vector.js';
 import View from '../../../../../../src/ol/View.js';
 
-describe('ol/mapz/control/FileSearch', function () {
+describe('ol/mapz/control/Geolocate', function () {
   let map;
-  const resultSource = new VectorSource();
 
   beforeEach(function () {
     const target = document.createElement('div');
@@ -15,11 +12,6 @@ describe('ol/mapz/control/FileSearch', function () {
     document.body.appendChild(target);
     map = new Map({
       target: target,
-      layers: [
-        new Vector({
-          source: resultSource,
-        }),
-      ],
       view: new View({
         center: [0, 0],
         zoom: 0,
@@ -32,10 +24,10 @@ describe('ol/mapz/control/FileSearch', function () {
     map = null;
   });
 
-  it('loads FileSearch control', function () {
+  it('loads Geolocate control', function () {
     map.renderSync();
-    const control = new FileSearch({
-      resultSource: resultSource,
+    const control = new Geolocate({
+      autoLocate: true,
     });
     map.getControls().clear();
     map.addControl(control);

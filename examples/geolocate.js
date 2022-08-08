@@ -1,4 +1,4 @@
-import Geolocate from '../src/ol/mapz/control/Geolocatecontrol.js';
+import Geolocate from '../src/ol/mapz/control/Geolocate.js';
 import Map from '../src/ol/Map.js';
 import Tile from '../src/ol/layer/Tile.js';
 import View from '../src/ol/View.js';

@@ -1,4 +1,4 @@
-import GeoTracker from '../src/ol/mapz/control/Geotrackercontrol.js';
+import Geotracker from '../src/ol/mapz/control/Geotracker.js';
 import Map from '../src/ol/Map.js';
 import Tile from '../src/ol/layer/Tile.js';
 import View from '../src/ol/View.js';
@@ -28,7 +28,7 @@ const map = new Map({
   }),
 });
 
-const geoTracker = new GeoTracker({
+const geoTracker = new Geotracker({
   // define position symbol
   marker: {
     src: 'https://www.mapz.com/api/images/position.svg',
