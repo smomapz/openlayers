@@ -10,7 +10,15 @@ import {autocomplete} from '@algolia/autocomplete-js';
 import {transform} from '../../proj.js';
 
 /**
- * @typedef {Object} FileSearchOptionsType
+ * @typedef {Object} FileSearchOptions
+ * @property {HTMLElement} [element] The element is the control's
+ * container element. This only needs to be specified if you're developing
+ * a custom control.
+ * @property {function(import("../../MapEvent.js").default):void} [render] Function called when
+ * the control should be re-rendered. This is called in a `requestAnimationFrame`
+ * callback.
+ * @property {HTMLElement|string} [target] Specify a target if you want
+ * the control to be rendered outside of the map's viewport.
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-search'.
  * @property {string|undefined} [searchUrl] The url to search against.
  * @property {import("../../source/Vector.js").default|undefined} [resultSource] The source to add the results to.
@@ -24,7 +32,6 @@ import {transform} from '../../proj.js';
  * @property {function(object):void|undefined} [resultCallback] The callback to use to get the result.
  * @property {string|undefined} [displayKey] The property to display the result as.
  * @property {string|undefined} [position] The position of the control. Default is 'topright'.
- * @typedef {import('../../control/Control.js').Options & FileSearchOptionsType} FileSearchOptions
  */
 
 /**

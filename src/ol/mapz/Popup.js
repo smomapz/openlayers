@@ -5,11 +5,15 @@
 import Overlay from '../Overlay.js';
 
 /**
- * @typedef {Object} PopupOptionsType
+ * @typedef {Object} PopupOptions
+ * @property {boolean} [insertFirst=true] Whether the overlay is inserted first
+ * in the overlay container, or appended. If the overlay is placed in the same
+ * container as that of the controls (see the `stopEvent` option) you will
+ * probably set `insertFirst` to `true` so the overlay is displayed below the
+ * controls.
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-layerswitcher'.
  * @property {boolean|undefined} [panView] If true, the map will be panned to the popup's position. Default is true.
  * @property {import('../Overlay.js').PanOptions|undefined} [panOptions] The options for the pan animation. Default is {'duration': 250}.
- * @typedef {import('../Overlay.js').Options & PopupOptionsType} PopupOptions
  */
 
 /**
@@ -124,7 +128,7 @@ class Popup extends Overlay {
    * @param {import('../Coordinate.js').Coordinate} coord Where to anchor the popup.
    * @param {string} html String of HTML to display within the popup.
    * @return {HTMLDivElement} The content of the popup.
-   * @api stable
+   * @api
    */
   show(coord, html) {
     this.setPosition(coord);
@@ -200,7 +204,7 @@ class Popup extends Overlay {
   /**
    * Hide the popup.
    * @return {HTMLDivElement} The HTML content of the popup.
-   * @api stable
+   * @api
    */
   hide() {
     this.container.style.display = 'none';
@@ -210,7 +214,7 @@ class Popup extends Overlay {
   /**
    * Toggle display of the popup.
    * @return {HTMLDivElement} The HTML content of the popup.
-   * @api stable
+   * @api
    */
   toggle() {
     if (this.container.style.display == 'block') {

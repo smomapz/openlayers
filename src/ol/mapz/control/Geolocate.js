@@ -7,12 +7,19 @@ import Geolocation from '../../Geolocation.js';
 import {CLASS_CONTROL, CLASS_UNSELECTABLE} from '../../css.js';
 
 /**
- * @typedef {Object} GeolocateOptionsType
+ * @typedef {Object} GeolocateOptions
+ * @property {HTMLElement} [element] The element is the control's
+ * container element. This only needs to be specified if you're developing
+ * a custom control.
+ * @property {function(import("../../MapEvent.js").default):void} [render] Function called when
+ * the control should be re-rendered. This is called in a `requestAnimationFrame`
+ * callback.
+ * @property {HTMLElement|string} [target] Specify a target if you want
+ * the control to be rendered outside of the map's viewport.
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-geolocate'.
  * @property {boolean|undefined} [autoLocate] If true, the control is automatically activated when the map is loaded. Default is false.
  * @property {number|undefined} [zoomToLevel] The zoom level to use when the control is clicked. Default is 16.
  * @property {string|undefined} [tipLabel] The label to use for the tip. Default is 'Click to locate'.
- * @typedef {import('../../control/Control.js').Options & GeolocateOptionsType} GeolocateOptions
  */
 
 /**

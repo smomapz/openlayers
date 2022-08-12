@@ -6,13 +6,20 @@ import {CLASS_CONTROL, CLASS_UNSELECTABLE} from '../../css.js';
 import {Control} from '../../control.js';
 
 /**
- * @typedef {Object} LayerSwitcherOptionsType
+ * @typedef {Object} LayerSwitcherOptions
+ * @property {HTMLElement} [element] The element is the control's
+ * container element. This only needs to be specified if you're developing
+ * a custom control.
+ * @property {function(import("../../MapEvent.js").default):void} [render] Function called when
+ * the control should be re-rendered. This is called in a `requestAnimationFrame`
+ * callback.
+ * @property {HTMLElement|string} [target] Specify a target if you want
+ * the control to be rendered outside of the map's viewport.
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-layerswitcher'.
  * @property {string|undefined} [tipLabel] The label to use for the tip. Default is 'Toggle Layerswitcher'.
  * @property {string|undefined} [baselayersLabel] Default is 'Baselayers'.
  * @property {boolean|undefined} [open] If true, the control is initially open. Default is true.
  * @property {import('../../style/Style.js').StyleLike} [trackStyle] The style to use for the track.
- * @typedef {import('../../control/Control.js').Options & LayerSwitcherOptionsType} LayerSwitcherOptions
  */
 
 /**
