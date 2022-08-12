@@ -1,0 +1,212 @@
+{
+    "features": [
+        {
+            "type": "Feature",
+            "crs": {
+                "properties": {
+                    "name": "EPSG:4326"
+                },
+                "type": "name"
+            },
+            "geometry": {
+                "coordinates": [
+                    8.184917000000002,
+                    49.610332999999976
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "name": "Weingut Wöhrle",
+                "imageName": "woehrle",
+                "contact": {
+                    "address": "Leininger Ring 64, 67278 Bockenheim",
+                    "phone": "06359 / 4215",
+                    "fax": "06359 / 949367",
+                    "email": "info@weingut-woehrle.de",
+                    "homepage": "www.weingut-woehrle.de"
+                },
+                "redWines": "Merlot, Dornfelder, Spätburgunder, Frühburgunder, Portugieser, Cabernet Sauvignon, Regent",
+                "whiteWines": "Traminer, Grauburgunder, Weißburgunder, Riesling, Müller-Thurgau / Rivaner, Cabernet blanc"
+            }
+        },
+        {
+            "type": "Feature",
+            "crs": {
+                "properties": {
+                    "name": "EPSG:4326"
+                },
+                "type": "name"
+            },
+            "geometry": {
+                "coordinates": [
+                    8.18325,
+                    49.61147
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "name": "Schlossgut Janson",
+                "imageName": "janson",
+                "contact": {
+                    "address": "Schlossweg 8, 67278 Bockenheim",
+                    "phone": "06359 / 4148",
+                    "fax": "06359 / 4285",
+                    "email": "info@schloss-janson.de",
+                    "homepage": "www.schloss-janson.de"
+                },
+                "whiteWines": "Silvaner, Scheurebe, Grauburgunder, Chardonnay, Kerner, Weißburgunder, Riesling, Müller-Thurgau / Rivaner",
+                "redWines": "Merlot, Dornfelder, Spätburgunder, Portugieser, Cabernet Sauvignon, Regen"
+            }
+        },
+        {
+            "type": "Feature",
+            "crs": {
+                "properties": {
+                    "name": "EPSG:4326"
+                },
+                "type": "name"
+            },
+            "geometry": {
+                "coordinates": [
+                    8.168541000000006,
+                    49.611901999999986
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "name": "Weingut J. Kreutzenberger",
+                "imageName": "kreutzenberger",
+                "contact": {
+                    "address": "Hauptstraße 5, 67271 Kindenheim",
+                    "phone": "06359 / 4266",
+                    "fax": "06359 / 40479",
+                    "email": "jochen.kreutzenberger@t-online.de",
+                    "homepage": "www.kreutzenberger.com"
+                },
+                "whiteWines": "Silvaner, Grauburgunder, Chardonnay, Kerner, Weißburgunder, Riesling, Müller-Thurgau / Rivaner, Huxelrebe",
+                "redWines": "Dornfelder, Spätburgunder, Portugieser, Cabernet Dorsa Cuvee`s"
+            }
+        },
+        {
+            "type": "Feature",
+            "crs": {
+                "properties": {
+                    "name": "EPSG:4326"
+                },
+                "type": "name"
+            },
+            "geometry": {
+                "coordinates": [
+                    8.15072930290222,
+                    49.376132827792176
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "name": "Weingut A. Christmann",
+                "imageName": "achristmann",
+                "contact": {
+                    "address": "Peter-Koch-Straße 43, 67435 Gimmeldingen",
+                    "phone": "06321 / 66039",
+                    "fax": "06321 / 68762",
+                    "email": "info@weingut-christmann.de",
+                    "homepage": "www.weingut-christmann.de"
+                },
+                "redWines": "Spätburgunder, St. Laurent",
+                "whiteWines": "Traminer, Grauburgunder, Weißburgunder, Riesling"
+            }
+        },
+        {
+            "type": "Feature",
+            "crs": {
+                "properties": {
+                    "name": "EPSG:4326"
+                },
+                "type": "name"
+            },
+            "geometry": {
+                "coordinates": [
+                    8.159347999999992,
+                    49.610993
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "name": "Weingut Jens Christmann",
+                "imageName": "jchristmann",
+                "contact": {
+                    "address": "Neugasse 40, 67271 Kindenheim",
+                    "phone": "06359 / 94215",
+                    "fax": "06359 / 94216",
+                    "email": "jens@rotwoi.de",
+                    "homepage": "www.rotwoi.de"
+                },
+                "redWines": "Traminer, Chardonnay, Weißburgunder, Riesling, Sauvignon Blanc",
+                "whiteWines": "Dornfelder, Spätburgunder, Portugieser"
+            }
+        },
+        {
+            "type": "Feature",
+            "crs": {
+                "properties": {
+                    "name": "EPSG:4326"
+                },
+                "type": "name"
+            },
+            "geometry": {
+                "coordinates": [
+                    8.181065720237733,
+                    49.60104573463754
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "name": "Weingut Brand",
+                "imageName": "brand",
+                "contact": {
+                    "address": "Weinstraße 7, 67278 Bockenheim",
+                    "phone": "06359 / 4944",
+                    "fax": "06359 / 40014",
+                    "email": "info@weingut-brand.com",
+                    "homepage": "www.weingut-brand.com"
+                },
+                "redWines": "Dornfelder, Spätburgunder, Portugieser",
+                "whiteWines": "Silvaner, Scheurebe, Auxerrois, Chardonnay, Kerner, Weißburgunder, Riesling, Müller-Thurgau / Rivaner"
+            }
+        },
+        {
+            "type": "Feature",
+            "crs": {
+                "properties": {
+                    "name": "EPSG:4326"
+                },
+                "type": "name"
+            },
+            "geometry": {
+                "coordinates": [
+                    8.187350186508185,
+                    49.60845423817983
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "name": "Weingut Lauermann & Weyer",
+                "imageName": "lauermann",
+                "contact": {
+                    "address": "Leininger Ring 79, 67278 Bockenheim",
+                    "phone": "06359 / 4231",
+                    "fax": "06359 / 409238",
+                    "email": "info@lauermannundweyer.de",
+                    "homepage": "www.lauermannundweyer.de"
+                },
+                "redWines": "Merlot, Dornfelder, Spätburgunder, St. Laurent, Portugieser, Cabernet Sauvignon, Schwarzriesling",
+                "whiteWines": "Traminer, Silvaner, Muskateller, Grauburgunder, Chardonnay, Weißburgunder, Riesling, Muskat, Ottonel"
+            }
+        }
+    ],
+    "properties": {
+        "bbox": "8.155937,49.608688,8.165501,49.612154",
+        "layername": "osm"
+    },
+    "type": "FeatureCollection"
+}
