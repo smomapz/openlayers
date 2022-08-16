@@ -11,12 +11,6 @@ import {transform} from '../../proj.js';
 
 /**
  * @typedef {Object} FileSearchOptions
- * @property {HTMLElement} [element] The element is the control's
- * container element. This only needs to be specified if you're developing
- * a custom control.
- * @property {function(import("../../MapEvent.js").default):void} [render] Function called when
- * the control should be re-rendered. This is called in a `requestAnimationFrame`
- * callback.
  * @property {HTMLElement|string} [target] Specify a target if you want
  * the control to be rendered outside of the map's viewport.
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-search'.
@@ -30,7 +24,6 @@ import {transform} from '../../proj.js';
  * @property {Array<string>|undefined} [searchProperties] The properties to search against.
  * @property {string|undefined} [displayResult] The property to display the result as.
  * @property {function(object):void|undefined} [resultCallback] The callback to use to get the result.
- * @property {string|undefined} [displayKey] The property to display the result as.
  * @property {string|undefined} [position] The position of the control. Default is 'topright'.
  */
 
@@ -42,45 +35,44 @@ import {transform} from '../../proj.js';
  */
 class FileSearch extends Control {
   /**
-   * @param {FileSearchOptions} opt_options FilSearch options.
+   * @param {FileSearchOptions} opt_options FileSearch options.
    */
   constructor(opt_options) {
-    const className = opt_options.className
-      ? opt_options.className
-      : 'mapz-control-search';
-    let cssClasses = className;
+    const options = opt_options ? opt_options : {};
 
-    if (!opt_options.target) {
-      cssClasses += ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
+    let className = options.className
+      ? options.className
+      : 'mapz-control-search';
+
+    if (!options.target) {
+      className += ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
     }
 
     const element = document.createElement('div');
-    element.setAttribute('class', cssClasses);
+    element.setAttribute('class', className);
 
     super({
       element: element,
-      target: opt_options.target,
+      target: options.target,
     });
 
-    const options = opt_options ? opt_options : {};
+    /**
+     * @private
+     * @type {string}
+     */
+    this.searchType_ = options.searchType ? options.searchType : null;
 
     /**
      * @private
      * @type {string}
      */
-    this.searchType = options.searchType ? options.searchType : null;
-
-    /**
-     * @private
-     * @type {string}
-     */
-    this.searchUrl = options.searchUrl ? options.searchUrl : null;
+    this.searchUrl_ = options.searchUrl ? options.searchUrl : null;
 
     /**
      * @private
      * @type {Array<string>}
      */
-    this.searchProperties = options.searchProperties
+    this.searchProperties_ = options.searchProperties
       ? options.searchProperties
       : ['name'];
 
@@ -88,17 +80,21 @@ class FileSearch extends Control {
      * @private
      * @type {string}
      */
-    this.displayResult = options.displayResult ? options.displayResult : 'name';
+    this.displayResult_ = options.displayResult
+      ? options.displayResult
+      : 'name';
 
     /**
-     * @private
+     * The vector source to add the results to.
      * @type {import("../../source/Vector.js").default}
+     * @api
      */
     this.resultSource = options.resultSource ? options.resultSource : null;
 
     /**
-     * @private
+     * The zoom level to zoom to.
      * @type {number}
+     * @api
      */
     this.zoomLevel = options.zoomLevel ? options.zoomLevel : 16;
 
@@ -106,19 +102,19 @@ class FileSearch extends Control {
      * @private
      * @type {number}
      */
-    this.limit = options.limit ? options.limit : 10;
+    this.limit_ = options.limit ? options.limit : 10;
 
     /**
      * @private
      * @type {number}
      */
-    this.minLength = options.minLength ? options.minLength : 3;
+    this.minLength_ = options.minLength ? options.minLength : 3;
 
     /**
      * @private
      * @type {Function}
      */
-    this.resultCallback = options.resultCallback
+    this.resultCallback_ = options.resultCallback
       ? options.resultCallback
       : this.selectSearchResult_;
 
@@ -126,71 +122,65 @@ class FileSearch extends Control {
      * @private
      * @type {string}
      */
-    this.placeholder = options.placeholder
+    this.placeholder_ = options.placeholder
       ? options.placeholder
       : 'Street, City';
 
     /**
      * @private
-     * @type {string}
-     */
-    this.displayKey = options.displayKey ? options.displayKey : 'name';
-
-    /**
-     * @private
      * @type {Array<object>}
      */
-    this.searchData = undefined;
+    this.searchData_ = undefined;
 
     /**
      * @private
-     * @type {HTMLElement}
+     * @type {HTMLDivElement}
      */
-    this.inputContainer = document.createElement('div');
-    this.inputContainer.setAttribute('class', 'search-input-container');
+    this.inputContainer_ = document.createElement('div');
+    this.inputContainer_.setAttribute('class', 'search-input-container');
 
     this.setControlPosition(options.position);
-    element.appendChild(this.inputContainer);
+    element.appendChild(this.inputContainer_);
 
-    if (this.searchUrl) {
-      fetch(this.searchUrl)
+    if (this.searchUrl_) {
+      fetch(this.searchUrl_)
         .then((response) => response.json())
         .then((data) => {
-          this.searchData = data.results;
+          this.searchData_ = data.results;
           const fileSearch = this;
           autocomplete({
-            container: fileSearch.inputContainer,
-            panelContainer: fileSearch.inputContainer,
-            placeholder: fileSearch.placeholder,
+            container: fileSearch.inputContainer_,
+            panelContainer: fileSearch.inputContainer_,
+            placeholder: fileSearch.placeholder_,
             detachedMediaQuery: 'none',
             getSources() {
               return [
                 {
                   sourceId: 'locations',
                   getItems: function ({query}) {
-                    if (query.length < fileSearch.minLength) {
+                    if (query.length < fileSearch.minLength_) {
                       return [];
                     }
-                    let results = fileSearch.searchData;
-                    fileSearch.searchProperties.forEach((property) => {
+                    let results = fileSearch.searchData_;
+                    fileSearch.searchProperties_.forEach((property) => {
                       results = results.filter((item) =>
                         item[property]
                           .toLowerCase()
                           .includes(query.toLowerCase())
                       );
                     });
-                    return results.slice(0, fileSearch.limit);
+                    return results.slice(0, fileSearch.limit_);
                   },
                   templates: {
                     item({item}) {
-                      const result = item[fileSearch.displayResult];
+                      const result = item[fileSearch.displayResult_];
                       if (typeof result === 'string') {
                         return result;
                       }
                     },
                   },
                   onSelect(event) {
-                    fileSearch.resultCallback(event.item);
+                    fileSearch.resultCallback_(event.item);
                     event.setQuery('');
                   },
                 },
@@ -222,7 +212,7 @@ class FileSearch extends Control {
     const view = this.map.getView();
 
     let coordinates =
-      this.searchType === 'geojson'
+      this.searchType_ === 'geojson'
         ? result['geometry'].coordinates
         : result['geom'].coordinates;
 

@@ -13,14 +13,6 @@ import {Vector} from '../../layer.js';
 
 /**
  * @typedef {Object} GeotrackerOptions
- * @property {HTMLElement} [element] The element is the control's
- * container element. This only needs to be specified if you're developing
- * a custom control.
- * @property {function(import("../../MapEvent.js").default):void} [render] Function called when
- * the control should be re-rendered. This is called in a `requestAnimationFrame`
- * callback.
- * @property {HTMLElement|string} [target] Specify a target if you want
- * the control to be rendered outside of the map's viewport.
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-geotracker'.
  * @property {string|undefined} [tipLabel] The label to use for the tip. Default is 'Geolocate'.
  * @property {number|undefined} [maximumAge] The maximumAge member indicates that the web application is willing to accept a cached position whose age is no greater than the specified time in milliseconds. Default is 0.
@@ -77,7 +69,6 @@ class Geotracker extends Control {
 
     super({
       element: element,
-      target: options.target,
     });
 
     /**

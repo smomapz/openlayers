@@ -8,12 +8,6 @@ import {CLASS_CONTROL, CLASS_UNSELECTABLE} from '../../css.js';
 
 /**
  * @typedef {Object} GeolocateOptions
- * @property {HTMLElement} [element] The element is the control's
- * container element. This only needs to be specified if you're developing
- * a custom control.
- * @property {function(import("../../MapEvent.js").default):void} [render] Function called when
- * the control should be re-rendered. This is called in a `requestAnimationFrame`
- * callback.
  * @property {HTMLElement|string} [target] Specify a target if you want
  * the control to be rendered outside of the map's viewport.
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-geolocate'.
@@ -34,17 +28,13 @@ class Geolocate extends Control {
    * @param {GeolocateOptions} opt_options Geolocate options.
    */
   constructor(opt_options) {
-    const className = opt_options.className
+    let className = opt_options.className
       ? opt_options.className
       : 'mapz-control-geolocate';
-    let cssClasses = className;
-
-    if (!opt_options.target) {
-      cssClasses += ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
-    }
+    className = CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL + ' ' + className;
 
     const element = document.createElement('div');
-    element.setAttribute('class', cssClasses);
+    element.setAttribute('class', className);
 
     super({
       element: element,
