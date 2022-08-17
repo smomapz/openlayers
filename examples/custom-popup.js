@@ -43,7 +43,7 @@ const clusters = new Vector({
   source: new Cluster({
     distance: 40,
     source: new VectorSource({
-      url: 'http://localhost:8080/data/geojson/winegrowers.geojson',
+      url: '/data/geojson/winegrowers.geojson',
       format: new GeoJSON(),
     }),
   }),
@@ -199,7 +199,7 @@ function createDetailPopup(feature) {
   const whiteWines = feature.get('whiteWines');
   const contact = feature.get('contact');
 
-  // Fill the tempalte
+  // Fill the template
   details.querySelector('.image').src = imageBaseUrl + '/' + imageName;
   details.querySelector('.name').innerHTML = name;
   details.querySelector('.red-wines').innerHTML = redWines;

@@ -57,7 +57,7 @@ map.addControl(geoTracker);
 
 // simulate device move
 let simulationData;
-fetch('http://localhost:8080/data/json/geolocation-orientation.json')
+fetch('/data/json/geolocation-orientation.json')
   .then((response) => response.json())
   .then((data) => (simulationData = data.data));
 
