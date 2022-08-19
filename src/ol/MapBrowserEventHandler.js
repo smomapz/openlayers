@@ -9,12 +9,11 @@ import PointerEventType from './pointer/EventType.js';
 import Target from './events/Target.js';
 import {PASSIVE_EVENT_LISTENERS} from './has.js';
 import {VOID} from './functions.js';
-import {getValues} from './obj.js';
 import {listen, unlistenByKey} from './events.js';
 
 class MapBrowserEventHandler extends Target {
   /**
-   * @param {import("./PluggableMap.js").default} map The map with the viewport to listen to events on.
+   * @param {import("./Map.js").default} map The map with the viewport to listen to events on.
    * @param {number} [moveTolerance] The minimal distance the pointer must travel to trigger a move.
    */
   constructor(map, moveTolerance) {
@@ -22,7 +21,7 @@ class MapBrowserEventHandler extends Target {
 
     /**
      * This is the element that we will listen to the real events on.
-     * @type {import("./PluggableMap.js").default}
+     * @type {import("./Map.js").default}
      * @private
      */
     this.map_ = map;
@@ -193,7 +192,7 @@ class MapBrowserEventHandler extends Target {
     ) {
       this.trackedTouches_[id] = event;
     }
-    this.activePointers_ = getValues(this.trackedTouches_);
+    this.activePointers_ = Object.values(this.trackedTouches_);
   }
 
   /**

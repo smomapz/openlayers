@@ -4,7 +4,6 @@
 import EventType from '../events/EventType.js';
 import Interaction from './Interaction.js';
 import MapEventType from '../MapEventType.js';
-import {assign} from '../obj.js';
 import {listen, unlistenByKey} from '../events.js';
 import {toFixed} from '../math.js';
 
@@ -71,14 +70,14 @@ function differentArray(a, b) {
  */
 class Link extends Interaction {
   /**
-   * @param {Options} [opt_options] Link options.
+   * @param {Options} [options] Link options.
    */
-  constructor(opt_options) {
+  constructor(options) {
     super();
 
-    const options = assign(
+    options = Object.assign(
       {animate: true, replace: false, prefix: ''},
-      opt_options || {}
+      options || {}
     );
 
     let animationOptions;
@@ -165,7 +164,7 @@ class Link extends Interaction {
   }
 
   /**
-   * @param {import("../PluggableMap.js").default|null} map Map.
+   * @param {import("../Map.js").default|null} map Map.
    */
   setMap(map) {
     const oldMap = this.getMap();
@@ -184,7 +183,7 @@ class Link extends Interaction {
   }
 
   /**
-   * @param {import("../PluggableMap.js").default} map Map.
+   * @param {import("../Map.js").default} map Map.
    * @private
    */
   registerListeners_(map) {
@@ -200,7 +199,7 @@ class Link extends Interaction {
   }
 
   /**
-   * @param {import("../PluggableMap.js").default} map Map.
+   * @param {import("../Map.js").default} map Map.
    * @private
    */
   unregisterListeners_(map) {
@@ -282,7 +281,7 @@ class Link extends Interaction {
 
     if (updateView) {
       if (!this.initial_ && this.animationOptions_) {
-        view.animate(assign(viewProperties, this.animationOptions_));
+        view.animate(Object.assign(viewProperties, this.animationOptions_));
       } else {
         if (viewProperties.center) {
           view.setCenter(viewProperties.center);

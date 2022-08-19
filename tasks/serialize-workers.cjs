@@ -28,7 +28,7 @@ async function build(input, {minify = true} = {}) {
           '@babel/preset-env',
           {
             'modules': false,
-            'targets': 'last 2 versions, not dead',
+            'targets': '> 1%, last 2 versions, not dead',
           },
         ],
       ],
@@ -80,7 +80,7 @@ exports.build = build;
  */
 async function main() {
   const inputDir = path.join(__dirname, '../src/ol/worker');
-  const outputDir = path.join(__dirname, '../build/ol/src/worker');
+  const outputDir = path.join(__dirname, '../build/ol/worker');
 
   await fse.ensureDir(outputDir);
 

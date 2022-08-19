@@ -67,6 +67,8 @@ describe('ol.style.Icon', function () {
         scale: 2,
         rotation: 4,
         size: [10, 12],
+        displacement: [5, 6],
+        declutterMode: 'obstacle',
       });
 
       const clone = original.clone();
@@ -87,6 +89,8 @@ describe('ol.style.Icon', function () {
       expect(original.getOpacity()).to.eql(clone.getOpacity());
       expect(original.getRotation()).to.eql(clone.getRotation());
       expect(original.getRotateWithView()).to.eql(clone.getRotateWithView());
+      expect(original.getDisplacement()).to.eql(clone.getDisplacement());
+      expect(original.getDeclutterMode()).to.eql(clone.getDeclutterMode());
     });
     it('copies all values with src', function () {
       const original = new Icon({
@@ -238,6 +242,32 @@ describe('ol.style.Icon', function () {
         size[0] / 2 - 10,
         size[1] / 2 + 20,
       ]);
+    });
+
+    it('scale applies to image size, not offset', function () {
+      const scale = 4;
+      let anchorScaled, anchorBig;
+
+      const iconStyleScaled = new Icon({
+        src: 'test.png',
+        size: size,
+        displacement: [20, 10],
+        scale: scale,
+      });
+      const iconStyleBig = new Icon({
+        src: 'test.png',
+        size: [size[0] * scale, size[1] * scale],
+        displacement: [20, 10],
+      });
+      anchorScaled = iconStyleScaled.getAnchor();
+      anchorBig = iconStyleBig.getAnchor();
+      expect(anchorScaled).to.eql([anchorBig[0] / scale, anchorBig[1] / scale]);
+
+      iconStyleScaled.setDisplacement([10, 20]);
+      iconStyleBig.setDisplacement([10, 20]);
+      anchorScaled = iconStyleScaled.getAnchor();
+      anchorBig = iconStyleBig.getAnchor();
+      expect(anchorScaled).to.eql([anchorBig[0] / scale, anchorBig[1] / scale]);
     });
   });
 

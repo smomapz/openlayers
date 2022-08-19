@@ -46,10 +46,10 @@ import {removeChildren, replaceNode} from '../dom.js';
  */
 class Attribution extends Control {
   /**
-   * @param {Options} [opt_options] Attribution options.
+   * @param {Options} [options] Attribution options.
    */
-  constructor(opt_options) {
-    const options = opt_options ? opt_options : {};
+  constructor(options) {
+    options = options ? options : {};
 
     super({
       element: document.createElement('div'),
@@ -186,7 +186,7 @@ class Attribution extends Control {
 
   /**
    * Collect a list of visible attributions and set the collapsible state.
-   * @param {import("../PluggableMap.js").FrameState} frameState Frame state.
+   * @param {import("../Map.js").FrameState} frameState Frame state.
    * @return {Array<string>} Attributions.
    * @private
    */
@@ -253,7 +253,7 @@ class Attribution extends Control {
 
   /**
    * @private
-   * @param {?import("../PluggableMap.js").FrameState} frameState Frame state.
+   * @param {?import("../Map.js").FrameState} frameState Frame state.
    */
   updateElement_(frameState) {
     if (!frameState) {
