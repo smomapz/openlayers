@@ -2,7 +2,6 @@
  * @module ol/renderer/webgl/TileLayer
  */
 import LRUCache from '../../structs/LRUCache.js';
-import State from '../../source/State.js';
 import TileRange from '../../TileRange.js';
 import TileState from '../../TileState.js';
 import TileTexture from '../../webgl/TileTexture.js';
@@ -96,7 +95,7 @@ function addTileTextureToLookup(tileTexturesByZ, tileTexture, z) {
 }
 
 /**
- * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+ * @param {import("../../Map.js").FrameState} frameState Frame state.
  * @param {import("../../extent.js").Extent} extent The frame extent.
  * @return {import("../../extent.js").Extent} Frame extent intersected with layer extents.
  */
@@ -245,7 +244,7 @@ class WebGLTileLayerRenderer extends WebGLLayerRenderer {
 
     /**
      * @private
-     * @type {import("../../PluggableMap.js").FrameState|null}
+     * @type {import("../../Map.js").FrameState|null}
      */
     this.frameState_ = null;
   }
@@ -296,7 +295,7 @@ class WebGLTileLayerRenderer extends WebGLLayerRenderer {
 
   /**
    * Determine whether renderFrame should be called.
-   * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+   * @param {import("../../Map.js").FrameState} frameState Frame state.
    * @return {boolean} Layer is ready to be rendered.
    */
   prepareFrameInternal(frameState) {
@@ -309,11 +308,11 @@ class WebGLTileLayerRenderer extends WebGLLayerRenderer {
     if (isEmpty(getRenderExtent(frameState, frameState.extent))) {
       return false;
     }
-    return source.getState() === State.READY;
+    return source.getState() === 'ready';
   }
 
   /**
-   * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+   * @param {import("../../Map.js").FrameState} frameState Frame state.
    * @param {import("../../extent.js").Extent} extent The extent to be rendered.
    * @param {number} initialZ The zoom level.
    * @param {Object<number, Array<TileTexture>>} tileTexturesByZ The zoom level.
@@ -413,7 +412,7 @@ class WebGLTileLayerRenderer extends WebGLLayerRenderer {
 
   /**
    * Render the layer.
-   * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+   * @param {import("../../Map.js").FrameState} frameState Frame state.
    * @return {HTMLElement} The rendered element.
    */
   renderFrame(frameState) {
@@ -509,7 +508,7 @@ class WebGLTileLayerRenderer extends WebGLLayerRenderer {
       }
     }
 
-    this.helper.useProgram(this.program_);
+    this.helper.useProgram(this.program_, frameState);
     this.helper.prepareDraw(frameState, !blend);
 
     const zs = Object.keys(tileTexturesByZ)
@@ -671,10 +670,11 @@ class WebGLTileLayerRenderer extends WebGLLayerRenderer {
     /**
      * Here we unconditionally expire the source cache since the renderer maintains
      * its own cache.
-     * @param {import("../../PluggableMap.js").default} map Map.
-     * @param {import("../../PluggableMap.js").FrameState} frameState Frame state.
+     * @param {import("../../Map.js").default} map Map.
+     * @param {import("../../Map.js").FrameState} frameState Frame state.
      */
     const postRenderFunction = function (map, frameState) {
+      tileSource.updateCacheSize(0.1, frameState.viewState.projection);
       tileSource.expireCache(frameState.viewState.projection, empty);
     };
 
@@ -726,7 +726,7 @@ class WebGLTileLayerRenderer extends WebGLLayerRenderer {
     let i, source, tileGrid;
     for (i = sources.length - 1; i >= 0; --i) {
       source = sources[i];
-      if (source.getState() === State.READY) {
+      if (source.getState() === 'ready') {
         tileGrid = source.getTileGridForProjection(viewState.projection);
         if (source.getWrapX()) {
           break;

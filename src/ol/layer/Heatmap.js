@@ -3,7 +3,6 @@
  */
 import BaseVector from './BaseVector.js';
 import WebGLPointsLayerRenderer from '../renderer/webgl/PointsLayer.js';
-import {assign} from '../obj.js';
 import {clamp} from '../math.js';
 import {createCanvasContext2D} from '../dom.js';
 
@@ -66,12 +65,12 @@ const DEFAULT_GRADIENT = ['#00f', '#0ff', '#0f0', '#ff0', '#f00'];
  */
 class Heatmap extends BaseVector {
   /**
-   * @param {Options} [opt_options] Options.
+   * @param {Options} [options] Options.
    */
-  constructor(opt_options) {
-    const options = opt_options ? opt_options : {};
+  constructor(options) {
+    options = options ? options : {};
 
-    const baseOptions = assign({}, options);
+    const baseOptions = Object.assign({}, options);
 
     delete baseOptions.gradient;
     delete baseOptions.radius;
