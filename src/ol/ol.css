@@ -400,9 +400,15 @@
 
 /* ol.mapz.control.Filesearch */
 
+[hidden] {
+  display: none!important;
+}
+
 .mapz-control-search {
   margin: 8px;
   width: 40%;
+  min-width: 25em;
+  position: inherit;
 }
 
 .aa-Form {
@@ -455,6 +461,10 @@ appearance: none;
   margin: 0 0 0 8px;
 }
 
+.aa-InputWrapperSuffix .aa-ClearButton .aa-ClearIcon {
+  fill: white;
+}
+
 .aa-Panel {
   margin: 8px 0 0 0;
   background: white;
@@ -487,7 +497,6 @@ appearance: none;
 
 .aa-Item {
   cursor: pointer;
-  min-height: 1em;
   padding: 0.2em;
 }
 
@@ -536,7 +545,7 @@ button.mapz-control-geotracker-button {
   font-weight: bold;
   display: inline-flex;
   align-items: center;
-  padding-left: 0.5em;
+  padding: 0.5em 1em;
   width: 100%;
 }
 

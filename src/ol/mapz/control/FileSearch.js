@@ -43,10 +43,7 @@ class FileSearch extends Control {
     let className = options.className
       ? options.className
       : 'mapz-control-search';
-
-    if (!options.target) {
-      className += ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
-    }
+    className += ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
 
     const element = document.createElement('div');
     element.setAttribute('class', className);

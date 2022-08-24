@@ -38,10 +38,7 @@ class Search extends Control {
     let className = options.className
       ? options.className
       : 'mapz-control-search';
-
-    if (!options.target) {
-      className += ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
-    }
+    className += ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
 
     const element = document.createElement('div');
 
@@ -260,11 +257,11 @@ class Search extends Control {
 
     this.searchResultFeatures.forEach((feature) => {
       const name = document.createElement('span');
-      name.className = 'name';
+      name.className = 'result-name';
       name.innerText = feature.get('name');
 
       const description = document.createElement('span');
-      description.className = 'description';
+      description.className = 'result-description';
       description.innerText = feature.get('description');
 
       const searchResult = document.createElement('div');
