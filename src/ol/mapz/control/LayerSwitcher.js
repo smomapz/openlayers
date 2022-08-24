@@ -10,6 +10,7 @@ import {Control} from '../../control.js';
  * @property {string|undefined} [className] The name of the class to use for the control. Default is 'mapz-control-layerswitcher'.
  * @property {string|undefined} [tipLabel] The label to use for the tip. Default is 'Toggle Layerswitcher'.
  * @property {string|undefined} [baselayersLabel] Default is 'Baselayers'.
+ * @property {string|undefined} [overlaysLabel] Default is 'Overlays'.
  * @property {boolean|undefined} [open] If true, the control is initially open. Default is true.
  * @property {import('../../style/Style.js').StyleLike} [trackStyle] The style to use for the track.
  */
@@ -40,15 +41,29 @@ class LayerSwitcher extends Control {
       ? options.baselayersLabel
       : 'Baselayers';
 
+    const overlaysLabel = options.overlaysLabel
+      ? options.overlaysLabel
+      : 'Overlays';
+
     const baseLayersContainer = document.createElement('div');
     baseLayersContainer.className = 'layers-container';
 
-    const headingContainer = document.createElement('div');
-    headingContainer.className = 'heading-container';
+    const baseLayersHeadingContainer = document.createElement('div');
+    baseLayersHeadingContainer.className = 'heading-container';
 
     const baseLayersTitle = document.createElement('div');
     baseLayersTitle.className = 'title';
     baseLayersTitle.innerHTML = baselayersLabel;
+
+    const overlaysContainer = document.createElement('div');
+    overlaysContainer.className = 'layers-container';
+
+    const overlaysHeadingContainer = document.createElement('div');
+    overlaysHeadingContainer.className = 'heading-container';
+
+    const overlaysTitle = document.createElement('div');
+    overlaysTitle.className = 'title';
+    overlaysTitle.innerHTML = overlaysLabel;
 
     const toggleButton = document.createElement('button');
     toggleButton.className = 'toggle-button';
@@ -60,11 +75,14 @@ class LayerSwitcher extends Control {
     const element = document.createElement('div');
     element.className = cssClasses;
 
-    element.appendChild(headingContainer);
+    element.appendChild(baseLayersHeadingContainer);
     element.appendChild(baseLayersContainer);
+    element.appendChild(overlaysHeadingContainer);
+    element.appendChild(overlaysContainer);
 
-    headingContainer.appendChild(baseLayersTitle);
-    headingContainer.appendChild(toggleButton);
+    baseLayersHeadingContainer.appendChild(baseLayersTitle);
+
+    overlaysHeadingContainer.appendChild(overlaysTitle);
 
     super({
       element: element,
@@ -80,7 +98,31 @@ class LayerSwitcher extends Control {
      * @private
      * @type {HTMLDivElement}
      */
+    this._baseLayersHeadingContainer = baseLayersHeadingContainer;
+
+    /**
+     * @private
+     * @type {HTMLDivElement}
+     */
     this._baseLayersTitle = baseLayersTitle;
+
+    /**
+     * @private
+     * @type {HTMLDivElement}
+     */
+    this._overlaysContainer = overlaysContainer;
+
+    /**
+     * @private
+     * @type {HTMLDivElement}
+     */
+    this._overlayHeadingContainer = overlaysHeadingContainer;
+
+    /**
+     * @private
+     * @type {HTMLDivElement}
+     */
+    this._overlaysTitle = overlaysTitle;
 
     /**
      * @private
@@ -97,6 +139,12 @@ class LayerSwitcher extends Control {
 
     /**
      * @private
+     * @type {Array<import('../../layer/Base.js').default>}
+     */
+    this.overlayLayers = [];
+
+    /**
+     * The current state of the control visibility.
      * @type {boolean}
      */
     this.open = options.open !== undefined ? options.open : true;
@@ -116,12 +164,23 @@ class LayerSwitcher extends Control {
     const _this = this;
     map.getLayers().on('add', (event) => {
       const addedLayer = event.element;
-      _this.baseLayers.push(addedLayer);
+      if (addedLayer.get('type') === 'overlay') {
+        _this.overlayLayers.push(addedLayer);
+      } else {
+        _this.baseLayers.push(addedLayer);
+      }
       _this.updateElement_();
     });
     map.getLayers().on('remove', (event) => {
       const removedLayer = event.element;
-      _this.baseLayers.splice(_this.baseLayers.indexOf(removedLayer), 1);
+      if (removedLayer.get('type') === 'overlay') {
+        _this.overlayLayers.splice(
+          _this.overlayLayers.indexOf(removedLayer),
+          1
+        );
+      } else {
+        _this.baseLayers.splice(_this.baseLayers.indexOf(removedLayer), 1);
+      }
       _this.updateElement_();
     });
 
@@ -136,8 +195,10 @@ class LayerSwitcher extends Control {
   handleToggle_(event) {
     event.preventDefault();
     this._baseLayersTitle.classList.toggle('closed');
+    this._overlaysTitle.classList.toggle('closed');
     this._toggleButton.classList.toggle('closed');
     this._baseLayersContainer.classList.toggle('closed');
+    this._overlaysContainer.classList.toggle('closed');
     this.open = !this.open;
   }
 
@@ -156,11 +217,15 @@ class LayerSwitcher extends Control {
       if (layer.get('displayInLayerSwitcher') === false) {
         return;
       }
-      if (layer.getVisible()) {
-        visibleBaseLayersIdx.push(_this.baseLayers.length);
+      if (layer.get('type') === 'overlay') {
+        _this.overlayLayers.push(layer);
+      } else {
+        if (layer.getVisible()) {
+          visibleBaseLayersIdx.push(_this.baseLayers.length);
+        }
+        layer.setVisible(false);
+        _this.baseLayers.push(layer);
       }
-      layer.setVisible(false);
-      _this.baseLayers.push(layer);
     });
     if (this.baseLayers.length > 0) {
       if (visibleBaseLayersIdx.length > 0) {
@@ -177,12 +242,31 @@ class LayerSwitcher extends Control {
    */
   updateElement_() {
     this._baseLayersContainer.innerHTML = '';
+    this._overlaysContainer.innerHTML = '';
     if (this.baseLayers.length < 1) {
-      return;
+      this._baseLayersHeadingContainer.style.display = 'none';
+      this._baseLayersContainer.style.display = 'none';
+      this._overlayHeadingContainer.appendChild(this._toggleButton);
+    } else {
+      this._baseLayersHeadingContainer.style.display = '';
+      this._baseLayersContainer.style.display = '';
+      this._baseLayersHeadingContainer.appendChild(this._toggleButton);
+    }
+    if (this.overlayLayers.length < 1) {
+      this._overlayHeadingContainer.style.display = 'none';
+      this._overlaysContainer.style.display = 'none';
+    } else {
+      this._overlayHeadingContainer.style.display = '';
+      this._overlaysContainer.style.display = '';
     }
     this.baseLayers.forEach((layer) => {
       this._baseLayersContainer.appendChild(
         this.createLayerElement_('radio', layer)
+      );
+    });
+    this.overlayLayers.forEach((layer) => {
+      this._overlaysContainer.appendChild(
+        this.createLayerElement_('checkbox', layer)
       );
     });
   }
