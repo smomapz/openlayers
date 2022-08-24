@@ -1,8 +1,12 @@
 import LayerSwitcher from '../src/ol/mapz/control/LayerSwitcher.js';
 import Map from '../src/ol/Map.js';
+import MapzStyle from '../src/ol/mapz/style/MapzStyle.js';
 import Tile from '../src/ol/layer/Tile.js';
+import Vector from '../src/ol/layer/Vector.js';
+import VectorSource from '../src/ol/source/Vector.js';
 import View from '../src/ol/View.js';
 import XYZ from '../src/ol/source/XYZ.js';
+import {GeoJSON} from '../src/ol/format.js';
 import {defaults} from '../src/ol/control.js';
 import {transform} from '../src/ol/proj.js';
 
@@ -34,13 +38,30 @@ const baseLayerGray = new Tile({
   name: 'mapz_shades_of_gray',
 });
 
+// Create vectorlayer and load GeoJSON file from mapz.com
+const vectorLayer = new Vector({
+  source: new VectorSource({
+    url: 'data/geojson/hamburg_airport.geojson',
+    format: new GeoJSON(),
+  }),
+  title: 'Features',
+  // add a type to the vectorlayer to define an overlay
+  type: 'overlay',
+  style: function (feature) {
+    const featureStyle = new MapzStyle(feature, {
+      baseIconUrl: 'https://www.mapz.com/mapz/mapz_redaktion/map/marker/',
+    });
+    return [featureStyle];
+  },
+});
+
 const map = new Map({
   target: document.getElementById('map'),
   logo: false,
-  layers: [baseLayer, baseLayerGray],
+  layers: [baseLayer, baseLayerGray, vectorLayer],
   controls: defaults().extend([new LayerSwitcher()]),
   view: new View({
-    center: transform([11.57231, 48.13689], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 14,
+    center: transform([9.98671, 53.63102], 'EPSG:4326', 'EPSG:3857'),
+    zoom: 9,
   }),
 });
