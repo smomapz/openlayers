@@ -109,11 +109,9 @@ class PinchRotate extends PointerInteraction {
     // rotate anchor point.
     // FIXME: should be the intersection point between the lines:
     //     touch0,touch1 and previousTouch0,previousTouch1
-    const viewportPosition = map.getViewport().getBoundingClientRect();
-    const centroid = centroidFromPointers(this.targetPointers);
-    centroid[0] -= viewportPosition.left;
-    centroid[1] -= viewportPosition.top;
-    this.anchor_ = map.getCoordinateFromPixelInternal(centroid);
+    this.anchor_ = map.getCoordinateFromPixelInternal(
+      map.getEventPixel(centroidFromPointers(this.targetPointers))
+    );
 
     // rotate
     if (this.rotating_) {
@@ -133,9 +131,8 @@ class PinchRotate extends PointerInteraction {
       const view = map.getView();
       view.endInteraction(this.duration_);
       return false;
-    } else {
-      return true;
     }
+    return true;
   }
 
   /**
@@ -154,9 +151,8 @@ class PinchRotate extends PointerInteraction {
         map.getView().beginInteraction();
       }
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 }
 

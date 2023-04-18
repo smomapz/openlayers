@@ -18,6 +18,7 @@ import {
   getHeight,
   getWidth,
 } from '../extent.js';
+import {createCanvasContext2D} from '../dom.js';
 import {get as getProjection, transform} from '../proj.js';
 
 /**
@@ -82,6 +83,12 @@ class ImageWMS extends ImageSource {
 
     /**
      * @private
+     * @type {CanvasRenderingContext2D}
+     */
+    this.context_ = createCanvasContext2D(1, 1);
+
+    /**
+     * @private
      * @type {?string}
      */
     this.crossOrigin_ =
@@ -106,7 +113,7 @@ class ImageWMS extends ImageSource {
      * @private
      * @type {!Object}
      */
-    this.params_ = options.params || {};
+    this.params_ = Object.assign({}, options.params);
 
     /**
      * @private
@@ -355,7 +362,8 @@ class ImageWMS extends ImageSource {
       pixelRatio,
       url,
       this.crossOrigin_,
-      this.imageLoadFunction_
+      this.imageLoadFunction_,
+      this.context_
     );
 
     this.renderedRevision_ = this.getRevision();

@@ -213,6 +213,13 @@ import {fromExtent as polygonFromExtent} from './geom/Polygon.js';
  */
 
 /**
+ * Like {@link import("./Map.js").FrameState}, but just `viewState` and `extent`.
+ * @typedef {Object} ViewStateAndExtent
+ * @property {State} viewState View state.
+ * @property {import("./extent.js").Extent} extent Extent.
+ */
+
+/**
  * Default min zoom level for the map view.
  * @type {number}
  */
@@ -500,7 +507,7 @@ class View extends BaseObject {
   set padding(padding) {
     let oldPadding = this.padding_;
     this.padding_ = padding;
-    const center = this.getCenter();
+    const center = this.getCenterInternal();
     if (center) {
       const newPadding = padding || [0, 0, 0, 0];
       oldPadding = oldPadding || [0, 0, 0, 0];
@@ -908,9 +915,8 @@ class View extends BaseObject {
         Math.abs(w * Math.cos(rotation)) + Math.abs(h * Math.sin(rotation)),
         Math.abs(w * Math.sin(rotation)) + Math.abs(h * Math.cos(rotation)),
       ];
-    } else {
-      return size;
     }
+    return size;
   }
 
   /**
@@ -974,9 +980,8 @@ class View extends BaseObject {
       hints[0] = this.hints_[0];
       hints[1] = this.hints_[1];
       return hints;
-    } else {
-      return this.hints_.slice();
     }
+    return this.hints_.slice();
   }
 
   /**
@@ -1246,6 +1251,16 @@ class View extends BaseObject {
   }
 
   /**
+   * @return {ViewStateAndExtent} Like `FrameState`, but just `viewState` and `extent`.
+   */
+  getViewStateAndExtent() {
+    return {
+      viewState: this.getState(),
+      extent: this.calculateExtent(),
+    };
+  }
+
+  /**
    * Get the current zoom level. This method may return non-integer zoom levels
    * if the view does not constrain the resolution, or if an interaction or
    * animation is underway.
@@ -1308,11 +1323,10 @@ class View extends BaseObject {
         this.resolutions_[baseLevel] /
         Math.pow(zoomFactor, clamp(zoom - baseLevel, 0, 1))
       );
-    } else {
-      return (
-        this.maxResolution_ / Math.pow(this.zoomFactor_, zoom - this.minZoom_)
-      );
     }
+    return (
+      this.maxResolution_ / Math.pow(this.zoomFactor_, zoom - this.minZoom_)
+    );
   }
 
   /**
@@ -1840,8 +1854,10 @@ class View extends BaseObject {
    * @param {import("./coordinate.js").Coordinate} [anchor] The origin of the transformation.
    */
   endInteractionInternal(duration, resolutionDirection, anchor) {
+    if (!this.getInteracting()) {
+      return;
+    }
     this.setHint(ViewHint.INTERACTING, -1);
-
     this.resolveConstraints(duration, resolutionDirection, anchor);
   }
 
@@ -2083,12 +2099,10 @@ export function createRotationConstraint(options) {
       return rotationNone;
     } else if (typeof constrainRotation === 'number') {
       return createSnapToN(constrainRotation);
-    } else {
-      return rotationNone;
     }
-  } else {
-    return disable;
+    return rotationNone;
   }
+  return disable;
 }
 
 /**

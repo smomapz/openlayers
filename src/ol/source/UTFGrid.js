@@ -148,12 +148,9 @@ export class CustomTile extends Tile {
       this.loadInternal_();
     } else {
       if (request === true) {
-        setTimeout(
-          function () {
-            callback(this.getData(coordinate));
-          }.bind(this),
-          0
-        );
+        setTimeout(() => {
+          callback(this.getData(coordinate));
+        }, 0);
       } else {
         callback(this.getData(coordinate));
       }
@@ -480,28 +477,23 @@ class UTFGrid extends TileSource {
     const tileCoordKey = getKeyZXY(z, x, y);
     if (this.tileCache.containsKey(tileCoordKey)) {
       return this.tileCache.get(tileCoordKey);
-    } else {
-      const tileCoord = [z, x, y];
-      const urlTileCoord = this.getTileCoordForTileUrlFunction(
-        tileCoord,
-        projection
-      );
-      const tileUrl = this.tileUrlFunction_(
-        urlTileCoord,
-        pixelRatio,
-        projection
-      );
-      const tile = new CustomTile(
-        tileCoord,
-        tileUrl !== undefined ? TileState.IDLE : TileState.EMPTY,
-        tileUrl !== undefined ? tileUrl : '',
-        this.tileGrid.getTileCoordExtent(tileCoord),
-        this.preemptive_,
-        this.jsonp_
-      );
-      this.tileCache.set(tileCoordKey, tile);
-      return tile;
     }
+    const tileCoord = [z, x, y];
+    const urlTileCoord = this.getTileCoordForTileUrlFunction(
+      tileCoord,
+      projection
+    );
+    const tileUrl = this.tileUrlFunction_(urlTileCoord, pixelRatio, projection);
+    const tile = new CustomTile(
+      tileCoord,
+      tileUrl !== undefined ? TileState.IDLE : TileState.EMPTY,
+      tileUrl !== undefined ? tileUrl : '',
+      this.tileGrid.getTileCoordExtent(tileCoord),
+      this.preemptive_,
+      this.jsonp_
+    );
+    this.tileCache.set(tileCoordKey, tile);
+    return tile;
   }
 
   /**

@@ -7,7 +7,7 @@
     if (!lzStringPromise) {
       lzStringPromise = new Promise(function (resolve, reject) {
         const script = document.createElement('script')
-        script.src = 'https://unpkg.com/lz-string@1.4.4/libs/lz-string.min.js';
+        script.src = 'https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js';
         document.head.append(script);
         script.addEventListener('load', resolve);
         script.addEventListener('error', reject);
@@ -78,7 +78,25 @@
             'index.html': {content: html},
             'main.js': {content: js},
             'package.json': {content: pkgJson},
-            'sandbox.config.json': {content: '{"template": "parcel"}'}
+            'sandbox.config.json': {content: '{"template": "parcel"}'},
+            '.babelrc': {content: '{}'},
+            '.prettierrc': {
+              content: JSON.stringify(
+                {
+                  printWidth: 80,
+                  tabWidth: 2,
+                  useTabs: false,
+                  semi: true,
+                  singleQuote: true,
+                  trailingComma: 'es5',
+                  bracketSpacing: false,
+                  jsxBracketSameLine: false,
+                  fluid: false,
+                },
+                undefined,
+                2
+              ),
+            },
           };
           if (worker) {
             files['worker.js'] = {content: worker}

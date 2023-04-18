@@ -8,7 +8,6 @@ import {createFromTileUrlFunctions} from '../tileurlfunction.js';
 import {createOrUpdate} from '../tilecoord.js';
 import {createXYZ, extentFromProjection} from '../tilegrid.js';
 import {get as getProjection, getTransformFromProjections} from '../proj.js';
-import {jsonp as requestJSONP} from '../net.js';
 
 /**
  * @param {import('../tilecoord.js').TileCoord} tileCoord Tile coord.
@@ -173,12 +172,9 @@ class BingMaps extends TileImage {
       '&c=' +
       this.culture_;
 
-    requestJSONP(
-      url,
-      this.handleImageryMetadataResponse.bind(this),
-      undefined,
-      'jsonp'
-    );
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => this.handleImageryMetadataResponse(json));
   }
 
   /**
@@ -254,19 +250,18 @@ class BingMaps extends TileImage {
           function (tileCoord, pixelRatio, projection) {
             if (!tileCoord) {
               return undefined;
-            } else {
-              createOrUpdate(
-                tileCoord[0],
-                tileCoord[1],
-                tileCoord[2],
-                quadKeyTileCoord
-              );
-              let url = imageUrl;
-              if (hidpi) {
-                url += '&dpi=d1&device=mobile';
-              }
-              return url.replace('{quadkey}', quadKey(quadKeyTileCoord));
             }
+            createOrUpdate(
+              tileCoord[0],
+              tileCoord[1],
+              tileCoord[2],
+              quadKeyTileCoord
+            );
+            let url = imageUrl;
+            if (hidpi) {
+              url += '&dpi=d1&device=mobile';
+            }
+            return url.replace('{quadkey}', quadKey(quadKeyTileCoord));
           }
         );
       })
@@ -278,47 +273,42 @@ class BingMaps extends TileImage {
         this.getProjection()
       );
 
-      this.setAttributions(
-        function (frameState) {
-          const attributions = [];
-          const viewState = frameState.viewState;
-          const tileGrid = this.getTileGrid();
-          const z = tileGrid.getZForResolution(
-            viewState.resolution,
-            this.zDirection
-          );
-          const tileCoord = tileGrid.getTileCoordForCoordAndZ(
-            viewState.center,
-            z
-          );
-          const zoom = tileCoord[0];
-          resource.imageryProviders.map(function (imageryProvider) {
-            let intersecting = false;
-            const coverageAreas = imageryProvider.coverageAreas;
-            for (let i = 0, ii = coverageAreas.length; i < ii; ++i) {
-              const coverageArea = coverageAreas[i];
-              if (
-                zoom >= coverageArea.zoomMin &&
-                zoom <= coverageArea.zoomMax
-              ) {
-                const bbox = coverageArea.bbox;
-                const epsg4326Extent = [bbox[1], bbox[0], bbox[3], bbox[2]];
-                const extent = applyTransform(epsg4326Extent, transform);
-                if (intersects(extent, frameState.extent)) {
-                  intersecting = true;
-                  break;
-                }
+      this.setAttributions((frameState) => {
+        const attributions = [];
+        const viewState = frameState.viewState;
+        const tileGrid = this.getTileGrid();
+        const z = tileGrid.getZForResolution(
+          viewState.resolution,
+          this.zDirection
+        );
+        const tileCoord = tileGrid.getTileCoordForCoordAndZ(
+          viewState.center,
+          z
+        );
+        const zoom = tileCoord[0];
+        resource.imageryProviders.map(function (imageryProvider) {
+          let intersecting = false;
+          const coverageAreas = imageryProvider.coverageAreas;
+          for (let i = 0, ii = coverageAreas.length; i < ii; ++i) {
+            const coverageArea = coverageAreas[i];
+            if (zoom >= coverageArea.zoomMin && zoom <= coverageArea.zoomMax) {
+              const bbox = coverageArea.bbox;
+              const epsg4326Extent = [bbox[1], bbox[0], bbox[3], bbox[2]];
+              const extent = applyTransform(epsg4326Extent, transform);
+              if (intersects(extent, frameState.extent)) {
+                intersecting = true;
+                break;
               }
             }
-            if (intersecting) {
-              attributions.push(imageryProvider.attribution);
-            }
-          });
+          }
+          if (intersecting) {
+            attributions.push(imageryProvider.attribution);
+          }
+        });
 
-          attributions.push(TOS_ATTRIBUTION);
-          return attributions;
-        }.bind(this)
-      );
+        attributions.push(TOS_ATTRIBUTION);
+        return attributions;
+      });
     }
 
     this.setState('ready');

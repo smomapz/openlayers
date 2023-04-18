@@ -5,20 +5,26 @@ import BaseLayer from './Base.js';
 import EventType from '../events/EventType.js';
 import LayerProperty from './Property.js';
 import RenderEventType from '../render/EventType.js';
+import View from '../View.js';
 import {assert} from '../asserts.js';
+import {intersects} from '../extent.js';
 import {listen, unlistenByKey} from '../events.js';
 
 /**
  * @typedef {function(import("../Map.js").FrameState):HTMLElement} RenderFunction
  */
 
+/**
+ * @typedef {'sourceready'|'change:source'} LayerEventType
+ */
+
 /***
  * @template Return
  * @typedef {import("../Observable").OnSignature<import("../Observable").EventTypes, import("../events/Event.js").default, Return> &
  *   import("../Observable").OnSignature<import("./Base").BaseLayerObjectEventTypes|
- *     'change:source', import("../Object").ObjectEvent, Return> &
+ *     LayerEventType, import("../Object").ObjectEvent, Return> &
  *   import("../Observable").OnSignature<import("../render/EventType").LayerRenderEventTypes, import("../render/Event").default, Return> &
- *   import("../Observable").CombinedOnSignature<import("../Observable").EventTypes|import("./Base").BaseLayerObjectEventTypes|'change:source'|
+ *   import("../Observable").CombinedOnSignature<import("../Observable").EventTypes|import("./Base").BaseLayerObjectEventTypes|LayerEventType|
  *     import("../render/EventType").LayerRenderEventTypes, Return>} LayerOnSignature
  */
 
@@ -81,9 +87,11 @@ import {listen, unlistenByKey} from '../events.js';
  * [layer.setMap()]{@link module:ol/layer/Layer~Layer#setMap} instead.
  *
  * A generic `change` event is fired when the state of the source changes.
+ * A `sourceready` event is fired when the layer's source is ready.
  *
  * @fires import("../render/Event.js").RenderEvent#prerender
  * @fires import("../render/Event.js").RenderEvent#postrender
+ * @fires import("../events/Event.js").BaseEvent#sourceready
  *
  * @template {import("../source/Source.js").default} [SourceType=import("../source/Source.js").default]
  * @template {import("../renderer/Layer.js").default} [RendererType=import("../renderer/Layer.js").default]
@@ -137,6 +145,12 @@ class Layer extends BaseLayer {
      * @type {RendererType}
      */
     this.renderer_ = null;
+
+    /**
+     * @private
+     * @type {boolean}
+     */
+    this.sourceReady_ = false;
 
     /**
      * @protected
@@ -214,6 +228,11 @@ class Layer extends BaseLayer {
    */
   handleSourceChange_() {
     this.changed();
+    if (this.sourceReady_ || this.getSource().getState() !== 'ready') {
+      return;
+    }
+    this.sourceReady_ = true;
+    this.dispatchEvent('sourceready');
   }
 
   /**
@@ -224,6 +243,7 @@ class Layer extends BaseLayer {
       unlistenByKey(this.sourceChangeKey_);
       this.sourceChangeKey_ = null;
     }
+    this.sourceReady_ = false;
     const source = this.getSource();
     if (source) {
       this.sourceChangeKey_ = listen(
@@ -232,18 +252,24 @@ class Layer extends BaseLayer {
         this.handleSourceChange_,
         this
       );
+      if (source.getState() === 'ready') {
+        this.sourceReady_ = true;
+        setTimeout(() => {
+          this.dispatchEvent('sourceready');
+        }, 0);
+      }
     }
     this.changed();
   }
 
   /**
    * @param {import("../pixel").Pixel} pixel Pixel.
-   * @return {Promise<Array<import("../Feature").default>>} Promise that resolves with
+   * @return {Promise<Array<import("../Feature").FeatureLike>>} Promise that resolves with
    * an array of features.
    */
   getFeatures(pixel) {
     if (!this.renderer_) {
-      return new Promise((resolve) => resolve([]));
+      return Promise.resolve([]);
     }
     return this.renderer_.getFeatures(pixel);
   }
@@ -257,6 +283,58 @@ class Layer extends BaseLayer {
       return null;
     }
     return this.renderer_.getData(pixel);
+  }
+
+  /**
+   * The layer is visible in the given view, i.e. within its min/max resolution or zoom and
+   * extent, and `getVisible()` is `true`.
+   * @param {View|import("../View.js").ViewStateAndExtent} view View or {@link import("../Map.js").FrameState}.
+   * @return {boolean} The layer is visible in the current view.
+   * @api
+   */
+  isVisible(view) {
+    let frameState;
+    if (view instanceof View) {
+      frameState = {
+        viewState: view.getState(),
+        extent: view.calculateExtent(),
+      };
+    } else {
+      frameState = view;
+    }
+    const layerExtent = this.getExtent();
+    return (
+      this.getVisible() &&
+      inView(this.getLayerState(), frameState.viewState) &&
+      (!layerExtent || intersects(layerExtent, frameState.extent))
+    );
+  }
+
+  /**
+   * Get the attributions of the source of this layer for the given view.
+   * @param {View|import("../View.js").ViewStateAndExtent} view View or  {@link import("../Map.js").FrameState}.
+   * @return {Array<string>} Attributions for this layer at the given view.
+   * @api
+   */
+  getAttributions(view) {
+    if (!this.isVisible(view)) {
+      return [];
+    }
+    let getAttributions;
+    const source = this.getSource();
+    if (source) {
+      getAttributions = source.getAttributions();
+    }
+    if (!getAttributions) {
+      return [];
+    }
+    const frameState =
+      view instanceof View ? view.getViewStateAndExtent() : view;
+    let attributions = getAttributions(frameState);
+    if (!Array.isArray(attributions)) {
+      attributions = [attributions];
+    }
+    return attributions;
   }
 
   /**
