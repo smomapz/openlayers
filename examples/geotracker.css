@@ -1,0 +1,10 @@
+#map {
+  position: relative;
+}
+
+#simulation-buttons {
+    position: absolute;
+    z-index: 1;
+    bottom: 0.5em;
+    left: 0.5em;
+}
