@@ -78,13 +78,12 @@ class Geotracker extends Control {
     this.marker_ = undefined;
     if (options.marker && options.marker.src) {
       const marker = new Image();
+      for (const attr in options.marker) {
+        if (options.marker.hasOwnProperty(attr)) {
+          marker.setAttribute(attr, options.marker[attr]);
+        }
+      }
       marker.src = options.marker.src;
-      if (options.marker.width) {
-        marker.width = options.marker.width;
-      }
-      if (options.marker.height) {
-        marker.height = options.marker.height;
-      }
       this.marker_ = new Overlay({
         positioning: 'center-center',
         element: marker,

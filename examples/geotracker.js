@@ -32,7 +32,7 @@ const geoTracker = new Geotracker({
   // define position symbol
   marker: {
     src: 'https://www.mapz.com/api/images/position.svg',
-    height: 60,
+    style: 'height: 60px;',
   },
   // set style for recorded track
   trackStyle: new Style({

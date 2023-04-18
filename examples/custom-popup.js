@@ -57,7 +57,6 @@ const clusters = new Vector({
         new Style({
           image: new Icon({
             src: 'https://www.mapz.com:8080/api/images/wine.svg',
-            // Set imgSize to fix IE11-Bug
             imgSize: [51.625, 72.039436],
             scale: 0.5,
           }),
@@ -72,7 +71,6 @@ const clusters = new Vector({
         geometry: feature.getGeometry(),
         image: new Icon({
           src: 'https://www.mapz.com:8080/api/images/cluster_marker.svg',
-          // Set imgSize to fix IE11-Bug
           imgSize: [51.613998, 72.042],
           scale: 0.5,
         }),
@@ -111,7 +109,10 @@ map
   .getView()
   .fit(
     transformExtent(
-      [8.15072930290222, 49.3761328277921, 8.18735018650818, 49.611902],
+      [
+        7.826752725294061, 49.35609299283519, 8.517372767725169,
+        49.632138620987405,
+      ],
       'EPSG:4326',
       'EPSG:3857'
     ),
