@@ -86,9 +86,9 @@ export class VectorSourceEvent extends Event {
  * Example:
  *
  * ```js
- * import {Vector} from 'ol/source';
- * import {GeoJSON} from 'ol/format';
- * import {bbox} from 'ol/loadingstrategy';
+ * import Vector from 'ol/source/Vector.js';
+ * import GeoJSON from 'ol/format/GeoJSON.js';
+ * import {bbox} from 'ol/loadingstrategy.js';
  *
  * const vectorSource = new Vector({
  *   format: new GeoJSON(),
@@ -500,26 +500,26 @@ class VectorSource extends Source {
       /**
        * @param {import("../Collection.js").CollectionEvent<import("../Feature.js").default<Geometry>>} evt The collection event
        */
-      function (evt) {
+      (evt) => {
         if (!modifyingCollection) {
           modifyingCollection = true;
           this.addFeature(evt.element);
           modifyingCollection = false;
         }
-      }.bind(this)
+      }
     );
     collection.addEventListener(
       CollectionEventType.REMOVE,
       /**
        * @param {import("../Collection.js").CollectionEvent<import("../Feature.js").default<Geometry>>} evt The collection event
        */
-      function (evt) {
+      (evt) => {
         if (!modifyingCollection) {
           modifyingCollection = true;
           this.removeFeature(evt.element);
           modifyingCollection = false;
         }
-      }.bind(this)
+      }
     );
     this.featuresCollection_ = collection;
   }
@@ -542,9 +542,9 @@ class VectorSource extends Source {
       }
     } else {
       if (this.featuresRtree_) {
-        const removeAndIgnoreReturn = function (feature) {
+        const removeAndIgnoreReturn = (feature) => {
           this.removeFeatureInternal(feature);
-        }.bind(this);
+        };
         this.featuresRtree_.forEach(removeAndIgnoreReturn);
         for (const id in this.nullGeometryFeatures_) {
           this.removeFeatureInternal(this.nullGeometryFeatures_[id]);
@@ -580,7 +580,8 @@ class VectorSource extends Source {
   forEachFeature(callback) {
     if (this.featuresRtree_) {
       return this.featuresRtree_.forEach(callback);
-    } else if (this.featuresCollection_) {
+    }
+    if (this.featuresCollection_) {
       this.featuresCollection_.forEach(callback);
     }
   }
@@ -603,9 +604,8 @@ class VectorSource extends Source {
       const geometry = feature.getGeometry();
       if (geometry.intersectsCoordinate(coordinate)) {
         return callback(feature);
-      } else {
-        return undefined;
       }
+      return undefined;
     });
   }
 
@@ -631,7 +631,8 @@ class VectorSource extends Source {
   forEachFeatureInExtent(extent, callback) {
     if (this.featuresRtree_) {
       return this.featuresRtree_.forEachInExtent(extent, callback);
-    } else if (this.featuresCollection_) {
+    }
+    if (this.featuresCollection_) {
       this.featuresCollection_.forEach(callback);
     }
   }
@@ -743,11 +744,11 @@ class VectorSource extends Source {
       return [].concat(
         ...extents.map((anExtent) => this.featuresRtree_.getInExtent(anExtent))
       );
-    } else if (this.featuresCollection_) {
-      return this.featuresCollection_.getArray().slice(0);
-    } else {
-      return [];
     }
+    if (this.featuresCollection_) {
+      return this.featuresCollection_.getArray().slice(0);
+    }
+    return [];
   }
 
   /**
@@ -933,9 +934,8 @@ class VectorSource extends Source {
     const id = feature.getId();
     if (id !== undefined) {
       return id in this.idIndex_;
-    } else {
-      return getUid(feature) in this.uidIndex_;
     }
+    return getUid(feature) in this.uidIndex_;
   }
 
   /**
@@ -983,7 +983,7 @@ class VectorSource extends Source {
           extentToLoad,
           resolution,
           projection,
-          function (features) {
+          (features) => {
             --this.loadingExtentsCount_;
             this.dispatchEvent(
               new VectorSourceEvent(
@@ -992,13 +992,13 @@ class VectorSource extends Source {
                 features
               )
             );
-          }.bind(this),
-          function () {
+          },
+          () => {
             --this.loadingExtentsCount_;
             this.dispatchEvent(
               new VectorSourceEvent(VectorEventType.FEATURESLOADERROR)
             );
-          }.bind(this)
+          }
         );
         loadedExtentsRtree.insert(extentToLoad, {extent: extentToLoad.slice()});
       }

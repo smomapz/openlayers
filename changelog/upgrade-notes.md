@@ -1,5 +1,36 @@
 ## Upgrade notes
 
+### Next version
+
+### 7.2.0
+
+#### Rendered resolutions of `ol/source/Raster`
+
+Previously, `ol/source/Raster` processed input sources at the current view resolution, which caused interpolation artefacts in cases where input sources were up- or downsampled. Now, `ol/source/Raster` picks up the resolutions from the first input source that has resolutions configured (either implicitly through a tile grid in the case of tile sources, or directly when configured through the `resolutions` constructor option). This improves the rendered output in most cases.
+
+If the previous behavior is desired, configure the source with `resolutions: null`.
+
+#### Fixed `wrapX` behavior of `ol/control/MousePosition`
+
+Previously, `ol/control/MousePosition` always displayed coordinates as-is. Now it has a `wrapX` option,
+which is `true` by default. This avoids longitudes aoutside the -180 to 180 degrees range.
+
+If you want the previous behavior, which displays coordinates with longitudes less than -180 or greater than 180, configure the control with `wrapX: false`.
+
+### 7.1.0
+
+#### Notice to full build users
+
+If you have been using the full (or legacy) build of the library, note that the location of these scripts is changing for this and future releases.  The previous locations were not stable, and although we do not recommend linking to the full build for production applications, there are many instances of this that were breaking due to changing URLs.  See the [download page](https://openlayers.org/download/) for details on the new versioned URLs for the full build.
+
+#### Deprecation of `ol/AssertionError` and error codes
+
+Future versions will no longer throw `ol/AssertionError` with an error `code`. Instead, they will throw `Error` with just the error message.
+
+#### Updating parameters in `ol/source/ImageWMS` and `ol/source/TileWMS`
+
+The `updateParams()` method is the only way to update WMS parameters. Changes made directly to the `params` object passed as a constructor option will have no effect.
+
 ### 7.0.0
 
 #### Removal of deprecated properties and methods

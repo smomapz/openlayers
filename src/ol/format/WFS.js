@@ -368,18 +368,19 @@ class WFS extends XMLFeature {
   readTransactionResponse(source) {
     if (!source) {
       return undefined;
-    } else if (typeof source === 'string') {
+    }
+    if (typeof source === 'string') {
       const doc = parse(source);
       return this.readTransactionResponseFromDocument(doc);
-    } else if (isDocument(source)) {
+    }
+    if (isDocument(source)) {
       return this.readTransactionResponseFromDocument(
         /** @type {Document} */ (source)
       );
-    } else {
-      return this.readTransactionResponseFromNode(
-        /** @type {Element} */ (source)
-      );
     }
+    return this.readTransactionResponseFromNode(
+      /** @type {Element} */ (source)
+    );
   }
 
   /**
@@ -393,18 +394,19 @@ class WFS extends XMLFeature {
   readFeatureCollectionMetadata(source) {
     if (!source) {
       return undefined;
-    } else if (typeof source === 'string') {
+    }
+    if (typeof source === 'string') {
       const doc = parse(source);
       return this.readFeatureCollectionMetadataFromDocument(doc);
-    } else if (isDocument(source)) {
+    }
+    if (isDocument(source)) {
       return this.readFeatureCollectionMetadataFromDocument(
         /** @type {Document} */ (source)
       );
-    } else {
-      return this.readFeatureCollectionMetadataFromNode(
-        /** @type {Element} */ (source)
-      );
     }
+    return this.readFeatureCollectionMetadataFromNode(
+      /** @type {Element} */ (source)
+    );
   }
 
   /**
@@ -821,9 +823,8 @@ function getTypeName(featurePrefix, featureType) {
   // The featureType already contains the prefix.
   if (featureType.startsWith(prefix)) {
     return featureType;
-  } else {
-    return prefix + featureType;
   }
+  return prefix + featureType;
 }
 
 /**

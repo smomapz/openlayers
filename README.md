@@ -23,7 +23,7 @@ new Map({
   layers: [
     new TileLayer({
       source: new XYZ({
-        url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
       })
     })
   ],
@@ -40,6 +40,8 @@ See the following examples for more detail on bundling OpenLayers with your appl
  * Using [Rollup](https://github.com/openlayers/ol-rollup)
  * Using [webpack](https://github.com/openlayers/ol-webpack)
  * Using [Parcel](https://github.com/openlayers/ol-parcel)
+
+For more detail on quick prototyping without the use of a Node.js based setup, see the [Skypack](https://github.com/openlayers/ol-skypack) example.
 
 ## Sponsors
 
@@ -74,7 +76,15 @@ OpenLayers appreciates contributions of all kinds.  We especially want to thank 
 
 > We develop leading Physical Security Information Management (PSIM) software.
 > OpenLayers is the core of our map engine and we love it! 
-> https://elacompil.recruitee.com/
+> https://ela.pl/
+
+<br>
+
+[![Ubigu Oy logo](./sponsor-logos/ubigu-oy.svg)](https://www.ubigu.fi/)
+
+> We advance holistic utilization and availability of spatial information,
+> for a better planned, built and managed society.
+> https://www.ubigu.fi/
 
 <br>
 

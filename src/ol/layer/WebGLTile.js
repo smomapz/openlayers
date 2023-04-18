@@ -392,6 +392,9 @@ class WebGLTileLayer extends BaseTileLayer {
    * @private
    */
   handleSourceUpdate_() {
+    if (this.hasRenderer()) {
+      this.getRenderer().clearCache();
+    }
     if (this.getSource()) {
       this.setStyle(this.style_);
     }
@@ -499,7 +502,6 @@ class WebGLTileLayer extends BaseTileLayer {
       vertexShader: parsedStyle.vertexShader,
       fragmentShader: parsedStyle.fragmentShader,
       uniforms: parsedStyle.uniforms,
-      paletteTextures: parsedStyle.paletteTextures,
     });
     this.changed();
   }

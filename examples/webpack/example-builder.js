@@ -14,8 +14,7 @@ const baseDir = dirname(fileURLToPath(import.meta.url));
 const isCssRegEx = /\.css(\?.*)?$/;
 const isJsRegEx = /\.js(\?.*)?$/;
 const importRegEx = /\s?import .*? from '([^']+)'/g;
-const isTemplateJs =
-  /\/(jquery(-\d+\.\d+\.\d+)?|(bootstrap(\.bundle)?))(\.min)?\.js(\?.*)?$/;
+const isTemplateJs = /\/(?:bootstrap(?:\.bundle)?)(?:\.min)?\.js(?:\?.*)?$/;
 const isTemplateCss =
   /\/(?:bootstrap|fontawesome-free@[\d.]+\/css\/(?:fontawesome|brands|solid))(?:\.min)?\.css(?:\?.*)?$/;
 
@@ -281,9 +280,8 @@ export default class ExampleBuilder {
   transformJsSource(source) {
     return (
       source
-        // remove "../src/" prefix and ".js" to have the same import syntax as the documentation
+        // remove "../src/" prefix to have the same import syntax as the documentation
         .replace(/'\.\.\/src\//g, "'")
-        .replace(/\.js';/g, "';")
         // Remove worker loader import and modify `new Worker()` to add source
         .replace(/import Worker from 'worker-loader![^\n]*\n/g, '')
         .replace('new Worker()', "new Worker('./worker.js', {type: 'module'})")
@@ -351,8 +349,7 @@ export default class ExampleBuilder {
         name: data.name,
         dependencies: getDependencies(jsSources, pkg),
         devDependencies: {
-          vite: '^3.0.3',
-          '@babel/core': 'latest',
+          vite: '^3.2.3',
         },
         scripts: {
           start: 'vite',

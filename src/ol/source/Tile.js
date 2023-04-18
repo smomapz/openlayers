@@ -232,13 +232,17 @@ class TileSource extends Source {
   }
 
   /**
+   * @param {import("../proj/Projection").default} [projection] Projection.
    * @return {Array<number>|null} Resolutions.
    */
-  getResolutions() {
-    if (!this.tileGrid) {
+  getResolutions(projection) {
+    const tileGrid = projection
+      ? this.getTileGridForProjection(projection)
+      : this.tileGrid;
+    if (!tileGrid) {
       return null;
     }
-    return this.tileGrid.getResolutions();
+    return tileGrid.getResolutions();
   }
 
   /**
@@ -270,9 +274,8 @@ class TileSource extends Source {
   getTileGridForProjection(projection) {
     if (!this.tileGrid) {
       return getTileGridForProjection(projection);
-    } else {
-      return this.tileGrid;
     }
+    return this.tileGrid;
   }
 
   /**
@@ -312,9 +315,8 @@ class TileSource extends Source {
     const tileSize = toSize(tileGrid.getTileSize(z), this.tmpSize);
     if (tilePixelRatio == 1) {
       return tileSize;
-    } else {
-      return scaleSize(tileSize, tilePixelRatio, this.tmpSize);
     }
+    return scaleSize(tileSize, tilePixelRatio, this.tmpSize);
   }
 
   /**

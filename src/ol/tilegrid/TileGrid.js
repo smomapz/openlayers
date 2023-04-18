@@ -310,9 +310,8 @@ class TileGrid {
   getOrigin(z) {
     if (this.origin_) {
       return this.origin_;
-    } else {
-      return this.origins_[z];
     }
+    return this.origins_[z];
   }
 
   /**
@@ -409,24 +408,6 @@ class TileGrid {
   }
 
   /**
-   * Get the extent for a tile range.
-   * @param {number} z Integer zoom level.
-   * @param {import("../TileRange.js").default} tileRange Tile range.
-   * @param {import("../extent.js").Extent} [tempExtent] Temporary import("../extent.js").Extent object.
-   * @return {import("../extent.js").Extent} Extent.
-   */
-  getTileRangeExtent(z, tileRange, tempExtent) {
-    const origin = this.getOrigin(z);
-    const resolution = this.getResolution(z);
-    const tileSize = toSize(this.getTileSize(z), this.tmpSize_);
-    const minX = origin[0] + tileRange.minX * tileSize[0] * resolution;
-    const maxX = origin[0] + (tileRange.maxX + 1) * tileSize[0] * resolution;
-    const minY = origin[1] + tileRange.minY * tileSize[1] * resolution;
-    const maxY = origin[1] + (tileRange.maxY + 1) * tileSize[1] * resolution;
-    return createOrUpdate(minX, minY, maxX, maxY, tempExtent);
-  }
-
-  /**
    * Get a tile range for the given extent and integer zoom level.
    * @param {import("../extent.js").Extent} extent Extent.
    * @param {number} z Integer zoom level.
@@ -434,18 +415,13 @@ class TileGrid {
    * @return {import("../TileRange.js").default} Tile range.
    */
   getTileRangeForExtentAndZ(extent, z, tempTileRange) {
-    const tileCoord = tmpTileCoord;
-    this.getTileCoordForXYAndZ_(extent[0], extent[3], z, false, tileCoord);
-    const minX = tileCoord[1];
-    const minY = tileCoord[2];
-    this.getTileCoordForXYAndZ_(extent[2], extent[1], z, true, tileCoord);
-    return createOrUpdateTileRange(
-      minX,
-      tileCoord[1],
-      minY,
-      tileCoord[2],
-      tempTileRange
-    );
+    this.getTileCoordForXYAndZ_(extent[0], extent[3], z, false, tmpTileCoord);
+    const minX = tmpTileCoord[1];
+    const minY = tmpTileCoord[2];
+    this.getTileCoordForXYAndZ_(extent[2], extent[1], z, true, tmpTileCoord);
+    const maxX = tmpTileCoord[1];
+    const maxY = tmpTileCoord[2];
+    return createOrUpdateTileRange(minX, maxX, minY, maxY, tempTileRange);
   }
 
   /**
@@ -612,9 +588,8 @@ class TileGrid {
   getTileSize(z) {
     if (this.tileSize_) {
       return this.tileSize_;
-    } else {
-      return this.tileSizes_[z];
     }
+    return this.tileSizes_[z];
   }
 
   /**
@@ -626,9 +601,8 @@ class TileGrid {
       return this.extent_
         ? this.getTileRangeForExtentAndZ(this.extent_, z)
         : null;
-    } else {
-      return this.fullTileRanges_[z];
     }
+    return this.fullTileRanges_[z];
   }
 
   /**

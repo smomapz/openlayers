@@ -75,6 +75,7 @@ import {applyTransform, getWidth} from './extent.js';
 import {clamp, modulo} from './math.js';
 import {equals, getWorldsAway} from './coordinate.js';
 import {getDistance} from './sphere.js';
+import {warn} from './console.js';
 
 /**
  * A projection as {@link module:ol/proj/Projection~Projection}, SRS identifier
@@ -110,11 +111,10 @@ export function disableCoordinateWarning(disable) {
 /**
  * @param {Array<number>} input Input coordinate array.
  * @param {Array<number>} [output] Output array of coordinate values.
- * @param {number} [dimension] Dimension.
  * @return {Array<number>} Output coordinate array (new array, same coordinate
  *     values).
  */
-export function cloneTransform(input, output, dimension) {
+export function cloneTransform(input, output) {
   if (output !== undefined) {
     for (let i = 0, ii = input.length; i < ii; ++i) {
       output[i] = input[i];
@@ -129,10 +129,9 @@ export function cloneTransform(input, output, dimension) {
 /**
  * @param {Array<number>} input Input coordinate array.
  * @param {Array<number>} [output] Output array of coordinate values.
- * @param {number} [dimension] Dimension.
  * @return {Array<number>} Input coordinate array (same array as input).
  */
-export function identityTransform(input, output, dimension) {
+export function identityTransform(input, output) {
   if (output !== undefined && input !== output) {
     for (let i = 0, ii = input.length; i < ii; ++i) {
       output[i] = input[i];
@@ -312,11 +311,11 @@ export function clearAllProjections() {
 export function createProjection(projection, defaultCode) {
   if (!projection) {
     return get(defaultCode);
-  } else if (typeof projection === 'string') {
-    return get(projection);
-  } else {
-    return /** @type {Projection} */ (projection);
   }
+  if (typeof projection === 'string') {
+    return get(projection);
+  }
+  return /** @type {Projection} */ (projection);
 }
 
 /**
@@ -444,10 +443,9 @@ export function equivalent(projection1, projection2) {
   const equalUnits = projection1.getUnits() === projection2.getUnits();
   if (projection1.getCode() === projection2.getCode()) {
     return equalUnits;
-  } else {
-    const transformFunc = getTransformFromProjections(projection1, projection2);
-    return transformFunc === cloneTransform && equalUnits;
   }
+  const transformFunc = getTransformFromProjections(projection1, projection2);
+  return transformFunc === cloneTransform && equalUnits;
 }
 
 /**
@@ -551,7 +549,8 @@ let userProjection = null;
 
 /**
  * Set the projection for coordinates supplied from and returned by API methods.
- * This includes all API methods except for those interacting with tile grids.
+ * This includes all API methods except for those interacting with tile grids,
+ * plus {@link import("./Map.js").FrameState} and {@link import("./View.js").State}.
  * @param {ProjectionLike} projection The user projection.
  * @api
  */
@@ -569,8 +568,6 @@ export function clearUserProjection() {
 
 /**
  * Get the projection for coordinates supplied from and returned by API methods.
- * Note that this method is not yet a part of the stable API.  Support for user
- * projections is not yet complete and should be considered experimental.
  * @return {Projection|null} The user projection (or null if not set).
  * @api
  */
@@ -579,8 +576,9 @@ export function getUserProjection() {
 }
 
 /**
- * Use geographic coordinates (WGS-84 datum) in API methods.  This includes all API
- * methods except for those interacting with tile grids.
+ * Use geographic coordinates (WGS-84 datum) in API methods.
+ * This includes all API methods except for those interacting with tile grids,
+ * plus {@link import("./Map.js").FrameState} and {@link import("./View.js").State}.
  * @api
  */
 export function useGeographic() {
@@ -619,8 +617,7 @@ export function fromUserCoordinate(coordinate, destProjection) {
       coordinate[1] <= 90
     ) {
       showCoordinateWarning = false;
-      // eslint-disable-next-line no-console
-      console.warn(
+      warn(
         'Call useGeographic() from ol/proj once to work with [longitude, latitude] coordinates.'
       );
     }

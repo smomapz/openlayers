@@ -910,16 +910,17 @@ function decodeHexString(text) {
 function getDataView(source) {
   if (typeof source === 'string') {
     return decodeHexString(source);
-  } else if (ArrayBuffer.isView(source)) {
+  }
+  if (ArrayBuffer.isView(source)) {
     if (source instanceof DataView) {
       return source;
     }
     return new DataView(source.buffer, source.byteOffset, source.byteLength);
-  } else if (source instanceof ArrayBuffer) {
-    return new DataView(source);
-  } else {
-    return null;
   }
+  if (source instanceof ArrayBuffer) {
+    return new DataView(source);
+  }
+  return null;
 }
 
 export default WKB;

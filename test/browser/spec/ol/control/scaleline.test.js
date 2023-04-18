@@ -506,23 +506,24 @@ describe('ol.control.ScaleLine', function () {
     const getMetricUnit = function (zoom) {
       if (zoom > 30) {
         return 'μm';
-      } else if (zoom > 20) {
-        return 'mm';
-      } else if (zoom > 10) {
-        return 'm';
-      } else {
-        return 'km';
       }
+      if (zoom > 20) {
+        return 'mm';
+      }
+      if (zoom > 10) {
+        return 'm';
+      }
+      return 'km';
     };
 
     const getImperialUnit = function (zoom) {
       if (zoom >= 21) {
         return 'in';
-      } else if (zoom >= 10) {
-        return 'ft';
-      } else {
-        return 'mi';
       }
+      if (zoom >= 10) {
+        return 'ft';
+      }
+      return 'mi';
     };
 
     beforeEach(function () {

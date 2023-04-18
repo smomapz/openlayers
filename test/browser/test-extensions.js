@@ -1,5 +1,6 @@
-// avoid importing anything that results in an instanceof check
-// since these extensions are global, instanceof checks fail with modules
+import {setLevel as setLogLevel} from '../../src/ol/console.js';
+
+setLogLevel('error');
 
 (function (global) {
   function afterLoad(type, path, next) {
@@ -87,30 +88,29 @@
     // check whitespace
     if (options && options.includeWhiteSpace) {
       return node.childNodes;
-    } else {
-      const nodes = [];
-      for (let i = 0, ii = node.childNodes.length; i < ii; i++) {
-        const child = node.childNodes[i];
-        if (child.nodeType == 1) {
-          // element node, add it
+    }
+    const nodes = [];
+    for (let i = 0, ii = node.childNodes.length; i < ii; i++) {
+      const child = node.childNodes[i];
+      if (child.nodeType == 1) {
+        // element node, add it
+        nodes.push(child);
+      } else if (child.nodeType == 3) {
+        // text node, add if non empty
+        if (
+          child.nodeValue &&
+          child.nodeValue.replace(/^\s*(.*?)\s*$/, '$1') !== ''
+        ) {
           nodes.push(child);
-        } else if (child.nodeType == 3) {
-          // text node, add if non empty
-          if (
-            child.nodeValue &&
-            child.nodeValue.replace(/^\s*(.*?)\s*$/, '$1') !== ''
-          ) {
-            nodes.push(child);
-          }
         }
       }
-      if (options && options.ignoreElementOrder) {
-        nodes.sort(function (a, b) {
-          return a.nodeName > b.nodeName ? 1 : a.nodeName < b.nodeName ? -1 : 0;
-        });
-      }
-      return nodes;
     }
+    if (options && options.ignoreElementOrder) {
+      nodes.sort(function (a, b) {
+        return a.nodeName > b.nodeName ? 1 : a.nodeName < b.nodeName ? -1 : 0;
+      });
+    }
+    return nodes;
   }
 
   function assertElementNodesEqual(node1, node2, options, errors) {

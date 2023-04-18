@@ -60,14 +60,13 @@ export function buffer(extent, value, dest) {
     dest[2] = extent[2] + value;
     dest[3] = extent[3] + value;
     return dest;
-  } else {
-    return [
-      extent[0] - value,
-      extent[1] - value,
-      extent[2] + value,
-      extent[3] + value,
-    ];
   }
+  return [
+    extent[0] - value,
+    extent[1] - value,
+    extent[2] + value,
+    extent[3] + value,
+  ];
 }
 
 /**
@@ -84,9 +83,8 @@ export function clone(extent, dest) {
     dest[2] = extent[2];
     dest[3] = extent[3];
     return dest;
-  } else {
-    return extent.slice();
   }
+  return extent.slice();
 }
 
 /**
@@ -216,9 +214,8 @@ export function createOrUpdate(minX, minY, maxX, maxY, dest) {
     dest[2] = maxX;
     dest[3] = maxY;
     return dest;
-  } else {
-    return [minX, minY, maxX, maxY];
   }
+  return [minX, minY, maxX, maxY];
 }
 
 /**
@@ -719,9 +716,8 @@ export function returnOrUpdate(extent, dest) {
     dest[2] = extent[2];
     dest[3] = extent[3];
     return dest;
-  } else {
-    return extent;
   }
+  return extent;
 }
 
 /**
@@ -813,6 +809,9 @@ export function intersectsSegment(extent, start, end) {
  * @api
  */
 export function applyTransform(extent, transformFn, dest, stops) {
+  if (isEmpty(extent)) {
+    return createOrUpdateEmpty(dest);
+  }
   let coordinates = [];
   if (stops > 1) {
     const width = extent[2] - extent[0];
@@ -903,13 +902,15 @@ export function wrapAndSliceX(extent, projection) {
     if (getWidth(extent) > worldWidth) {
       // the extent wraps around on itself
       return [[projectionExtent[0], extent[1], projectionExtent[2], extent[3]]];
-    } else if (extent[0] < projectionExtent[0]) {
+    }
+    if (extent[0] < projectionExtent[0]) {
       // the extent crosses the anti meridian, so it needs to be sliced
       return [
         [extent[0] + worldWidth, extent[1], projectionExtent[2], extent[3]],
         [projectionExtent[0], extent[1], extent[2], extent[3]],
       ];
-    } else if (extent[2] > projectionExtent[2]) {
+    }
+    if (extent[2] > projectionExtent[2]) {
       // the extent crosses the anti meridian, so it needs to be sliced
       return [
         [extent[0], extent[1], projectionExtent[2], extent[3]],

@@ -49,7 +49,7 @@ export const DefaultUniform = {
   TIME: 'u_time',
   ZOOM: 'u_zoom',
   RESOLUTION: 'u_resolution',
-  SIZE_PX: 'u_sizePx',
+  VIEWPORT_SIZE_PX: 'u_viewportSizePx',
   PIXEL_RATIO: 'u_pixelRatio',
 };
 
@@ -106,6 +106,7 @@ export const AttributeType = {
  * @typedef {Object} UniformInternalDescription
  * @property {string} name Name
  * @property {UniformValue} [value] Value
+ * @property {UniformValue} [prevValue] The previous value.
  * @property {WebGLTexture} [texture] Texture
  * @private
  */
@@ -577,6 +578,19 @@ class WebGLHelper extends Disposable {
   }
 
   /**
+   * Prepare a program to use a texture.
+   * @param {WebGLTexture} texture The texture.
+   * @param {number} slot The texture slot.
+   * @param {string} uniformName The corresponding uniform name.
+   */
+  bindTexture(texture, slot, uniformName) {
+    const gl = this.getGL();
+    gl.activeTexture(gl.TEXTURE0 + slot);
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.uniform1i(this.getUniformLocation(uniformName), slot);
+  }
+
+  /**
    * Clear the render target & bind it for future draw operations.
    * This is similar to `prepareDraw`, only post processes will not be applied.
    * Note: the whole viewport will be drawn to the render target, regardless of its size.
@@ -690,7 +704,10 @@ class WebGLHelper extends Disposable {
       frameState.viewState.resolution
     );
     this.setUniformFloatValue(DefaultUniform.PIXEL_RATIO, pixelRatio);
-    this.setUniformFloatVec2(DefaultUniform.SIZE_PX, [size[0], size[1]]);
+    this.setUniformFloatVec2(DefaultUniform.VIEWPORT_SIZE_PX, [
+      size[0],
+      size[1],
+    ]);
   }
 
   /**
@@ -702,86 +719,84 @@ class WebGLHelper extends Disposable {
 
     let value;
     let textureSlot = 0;
-    this.uniforms_.forEach(
-      function (uniform) {
-        value =
-          typeof uniform.value === 'function'
-            ? uniform.value(frameState)
-            : uniform.value;
+    this.uniforms_.forEach((uniform) => {
+      value =
+        typeof uniform.value === 'function'
+          ? uniform.value(frameState)
+          : uniform.value;
 
-        // apply value based on type
-        if (
-          value instanceof HTMLCanvasElement ||
-          value instanceof HTMLImageElement ||
-          value instanceof ImageData
-        ) {
-          // create a texture & put data
-          if (!uniform.texture) {
-            uniform.prevValue = undefined;
-            uniform.texture = gl.createTexture();
-          }
-          gl.activeTexture(gl[`TEXTURE${textureSlot}`]);
-          gl.bindTexture(gl.TEXTURE_2D, uniform.texture);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
-          const imageReady =
-            !(value instanceof HTMLImageElement) ||
-            /** @type {HTMLImageElement} */ (value).complete;
-          if (imageReady && uniform.prevValue !== value) {
-            uniform.prevValue = value;
-            gl.texImage2D(
-              gl.TEXTURE_2D,
-              0,
-              gl.RGBA,
-              gl.RGBA,
-              gl.UNSIGNED_BYTE,
-              value
-            );
-          }
-
-          // fill texture slots by increasing index
-          gl.uniform1i(this.getUniformLocation(uniform.name), textureSlot++);
-        } else if (Array.isArray(value) && value.length === 6) {
-          this.setUniformMatrixValue(
-            uniform.name,
-            fromTransform(this.tmpMat4_, value)
-          );
-        } else if (Array.isArray(value) && value.length <= 4) {
-          switch (value.length) {
-            case 2:
-              gl.uniform2f(
-                this.getUniformLocation(uniform.name),
-                value[0],
-                value[1]
-              );
-              return;
-            case 3:
-              gl.uniform3f(
-                this.getUniformLocation(uniform.name),
-                value[0],
-                value[1],
-                value[2]
-              );
-              return;
-            case 4:
-              gl.uniform4f(
-                this.getUniformLocation(uniform.name),
-                value[0],
-                value[1],
-                value[2],
-                value[3]
-              );
-              return;
-            default:
-              return;
-          }
-        } else if (typeof value === 'number') {
-          gl.uniform1f(this.getUniformLocation(uniform.name), value);
+      // apply value based on type
+      if (
+        value instanceof HTMLCanvasElement ||
+        value instanceof HTMLImageElement ||
+        value instanceof ImageData
+      ) {
+        // create a texture & put data
+        if (!uniform.texture) {
+          uniform.prevValue = undefined;
+          uniform.texture = gl.createTexture();
         }
-      }.bind(this)
-    );
+        gl.activeTexture(gl[`TEXTURE${textureSlot}`]);
+        gl.bindTexture(gl.TEXTURE_2D, uniform.texture);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+        const imageReady =
+          !(value instanceof HTMLImageElement) ||
+          /** @type {HTMLImageElement} */ (value).complete;
+        if (imageReady && uniform.prevValue !== value) {
+          uniform.prevValue = value;
+          gl.texImage2D(
+            gl.TEXTURE_2D,
+            0,
+            gl.RGBA,
+            gl.RGBA,
+            gl.UNSIGNED_BYTE,
+            value
+          );
+        }
+
+        // fill texture slots by increasing index
+        gl.uniform1i(this.getUniformLocation(uniform.name), textureSlot++);
+      } else if (Array.isArray(value) && value.length === 6) {
+        this.setUniformMatrixValue(
+          uniform.name,
+          fromTransform(this.tmpMat4_, value)
+        );
+      } else if (Array.isArray(value) && value.length <= 4) {
+        switch (value.length) {
+          case 2:
+            gl.uniform2f(
+              this.getUniformLocation(uniform.name),
+              value[0],
+              value[1]
+            );
+            return;
+          case 3:
+            gl.uniform3f(
+              this.getUniformLocation(uniform.name),
+              value[0],
+              value[1],
+              value[2]
+            );
+            return;
+          case 4:
+            gl.uniform4f(
+              this.getUniformLocation(uniform.name),
+              value[0],
+              value[1],
+              value[2],
+              value[3]
+            );
+            return;
+          default:
+            return;
+        }
+      } else if (typeof value === 'number') {
+        gl.uniform1f(this.getUniformLocation(uniform.name), value);
+      }
+    });
   }
 
   /**
@@ -842,7 +857,7 @@ class WebGLHelper extends Disposable {
     gl.linkProgram(program);
 
     if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
-      const message = `Fragment shader compliation failed: ${gl.getShaderInfoLog(
+      const message = `Fragment shader compilation failed: ${gl.getShaderInfoLog(
         fragmentShader
       )}`;
       throw new Error(message);
@@ -858,8 +873,8 @@ class WebGLHelper extends Disposable {
     gl.deleteShader(vertexShader);
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      const message = `GL program linking failed: ${gl.getShaderInfoLog(
-        vertexShader
+      const message = `GL program linking failed: ${gl.getProgramInfoLog(
+        program
       )}`;
       throw new Error(message);
     }
@@ -898,8 +913,8 @@ class WebGLHelper extends Disposable {
   }
 
   /**
-   * Modifies the given transform to apply the rotation/translation/scaling of the given frame state.
-   * The resulting transform can be used to convert world space coordinates to view coordinates.
+   * Sets the given transform to apply the rotation/translation/scaling of the given frame state.
+   * The resulting transform can be used to convert world space coordinates to view coordinates in the [-1, 1] range.
    * @param {import("../Map.js").FrameState} frameState Frame state.
    * @param {import("../transform").Transform} transform Transform to update.
    * @return {import("../transform").Transform} The updated transform object.
@@ -909,8 +924,6 @@ class WebGLHelper extends Disposable {
     const rotation = frameState.viewState.rotation;
     const resolution = frameState.viewState.resolution;
     const center = frameState.viewState.center;
-
-    resetTransform(transform);
     composeTransform(
       transform,
       0,

@@ -93,17 +93,16 @@ export function lineStringCoordinateAtM(
       coordinate = flatCoordinates.slice(offset, offset + stride);
       coordinate[stride - 1] = m;
       return coordinate;
-    } else {
-      return null;
     }
-  } else if (flatCoordinates[end - 1] < m) {
+    return null;
+  }
+  if (flatCoordinates[end - 1] < m) {
     if (extrapolate) {
       coordinate = flatCoordinates.slice(end - stride, end);
       coordinate[stride - 1] = m;
       return coordinate;
-    } else {
-      return null;
     }
+    return null;
   }
   // FIXME use O(1) search
   if (m == flatCoordinates[offset + stride - 1]) {
@@ -174,18 +173,16 @@ export function lineStringsCoordinateAtM(
       coordinate = flatCoordinates.slice(0, stride);
       coordinate[stride - 1] = m;
       return coordinate;
-    } else {
-      return null;
     }
+    return null;
   }
   if (flatCoordinates[flatCoordinates.length - 1] < m) {
     if (extrapolate) {
       coordinate = flatCoordinates.slice(flatCoordinates.length - stride);
       coordinate[stride - 1] = m;
       return coordinate;
-    } else {
-      return null;
     }
+    return null;
   }
   for (let i = 0, ii = ends.length; i < ii; ++i) {
     const end = ends[i];
@@ -194,7 +191,8 @@ export function lineStringsCoordinateAtM(
     }
     if (m < flatCoordinates[offset + stride - 1]) {
       return null;
-    } else if (m <= flatCoordinates[end - 1]) {
+    }
+    if (m <= flatCoordinates[end - 1]) {
       return lineStringCoordinateAtM(
         flatCoordinates,
         offset,
