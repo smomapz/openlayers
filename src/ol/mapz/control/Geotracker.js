@@ -4,6 +4,7 @@
 
 import Feature from '../../Feature.js';
 import Geolocation from '../../Geolocation.js';
+import Modal from './Modal.js';
 import Overlay from '../../Overlay.js';
 import VectorSource from '../../source/Vector.js';
 import {CLASS_CONTROL, CLASS_UNSELECTABLE} from '../../css.js';
@@ -57,9 +58,6 @@ class Geotracker extends Control {
     button.setAttribute('class', className + '-button');
     button.type = 'button';
     button.title = tipLabel;
-    button.onclick = () => {
-      this.startTracking_();
-    };
 
     const cssClasses =
       className + ' ' + CLASS_UNSELECTABLE + ' ' + CLASS_CONTROL;
@@ -70,6 +68,12 @@ class Geotracker extends Control {
     super({
       element: element,
     });
+
+    // button.onclick = (event) => {
+    //   console.log('click');
+    //   this.handleClick_(event);
+    // };
+    button.addEventListener('click', this.handleClick_.bind(this), false);
 
     /**
      * @private
@@ -141,7 +145,18 @@ class Geotracker extends Control {
       });
       this.trackStyle_ = options.trackStyle;
     }
+
+    /**
+     * @private
+     * @type {Geolocation}
+     */
     this.geolocation_ = null;
+
+    /**
+     * @private
+     * @type {Modal}
+     */
+    this.errorModal_ = null;
   }
 
   /**
@@ -149,31 +164,14 @@ class Geotracker extends Control {
    */
   setMap(map) {
     super.setMap(map);
+    this.map = map;
     if (!map) {
       return;
     }
     if (this.marker_) {
       map.addOverlay(this.marker_);
     }
-    this.geolocation_ = new Geolocation({
-      projection: map.getView().getProjection(),
-      trackingOptions: this.trackingOptions_,
-    });
-    const _this = this;
-    this.geolocation_.on('change', function () {
-      const position = _this.geolocation_.getPosition();
-      const heading = _this.geolocation_.getHeading() || 0;
-      // add timestamp
-      const m = Date.now();
-      _this.addPosition_(position, heading, m);
-
-      const coords = _this.positions_.getCoordinates();
-      const len = coords.length;
-      if (len >= 2) {
-        _this.deltaMean_ = (coords[len - 1][3] - coords[0][3]) / (len - 1);
-      }
-      _this.mapFollow_();
-    });
+    this.setGeolocation_();
     if (this.trackSource_) {
       map.addLayer(
         new Vector({
@@ -195,6 +193,57 @@ class Geotracker extends Control {
    */
   getGeolocation() {
     return this.geolocation_;
+  }
+
+  /**
+   * @private
+   */
+  setGeolocation_() {
+    this.geolocation_ = new Geolocation({
+      projection: this.map.getView().getProjection(),
+      trackingOptions: this.trackingOptions_,
+    });
+    const _this = this;
+    this.geolocation_.on('change', function () {
+      const position = _this.geolocation_.getPosition();
+      const heading = _this.geolocation_.getHeading() || 0;
+      // add timestamp
+      const m = Date.now();
+      _this.addPosition_(position, heading, m);
+
+      const coords = _this.positions_.getCoordinates();
+      const len = coords.length;
+      if (len >= 2) {
+        _this.deltaMean_ = (coords[len - 1][3] - coords[0][3]) / (len - 1);
+      }
+      _this.mapFollow_();
+      if (_this.errorModal_) {
+        _this.map.removeControl(_this.errorModal_);
+      }
+    });
+    this.geolocation_.on('error', (error) => {
+      if (!this.errorModal_) {
+        this.errorModal_ = new Modal({
+          contentText:
+            'Your system refuses geolocation, please check your system settings.',
+        });
+      }
+      this.map.addControl(this.errorModal_);
+    });
+  }
+
+  /**
+   * @param {MouseEvent} event The event to handle.
+   * @private
+   */
+  handleClick_(event) {
+    event.preventDefault();
+    if (this.errorModal_) {
+      this.setGeolocation_();
+    }
+    if (this.geolocation_) {
+      this.startTracking_();
+    }
   }
 
   /**

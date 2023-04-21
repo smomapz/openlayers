@@ -707,3 +707,39 @@ button.mapz-control-geotracker-button {
 .search-results div.no-results:hover {
   border: 0;
 }
+
+/* ol.mapz.control.Modal */
+
+.mapz-control-modal, 
+.mapz-control-modal:focus,
+.mapz-control-modal:hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mapz-control-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(254, 254, 254, 0.9);
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(169, 169, 169, 0.5);
+  padding: 30px 30px;
+  width: 50%;
+  min-height: 30%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mapz-control-modal-message {
+  text-align: center;
+}

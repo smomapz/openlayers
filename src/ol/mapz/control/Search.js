@@ -260,12 +260,10 @@ class Search extends Control {
       name.className = 'result-name';
       name.innerText = feature.get('name');
 
-      const description = document.createElement('span');
-      description.className = 'result-description';
-      description.innerText = feature.get('description');
+      name.innerHTML += ' ' + feature.get('description');
 
       const searchResult = document.createElement('div');
-      searchResult.append(name, description);
+      searchResult.append(name);
 
       searchResult.onclick = () => {
         this.selectSearchResult_(feature);

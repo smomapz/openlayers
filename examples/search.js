@@ -14,8 +14,9 @@ const resultSource = new VectorSource();
 
 const searchControl = new Search({
   resultSource: resultSource,
-  searchUrl:
-    'https://www.mapz.com:8080/mapz/mapz_redaktion/api/search/nominatim',
+  searchUrl: 'https://www.mapz.com:8080/wine/api/search/wineyard',
+  // Text for the placeholder
+  placeholder: 'Wineyard name',
   // Zoomlevel to load result
   zoomLevel: 15,
   // Text if nothing was found

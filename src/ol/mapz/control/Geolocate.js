@@ -4,6 +4,7 @@
 
 import Control from '../../control/Control.js';
 import Geolocation from '../../Geolocation.js';
+import Modal from './Modal.js';
 import {CLASS_CONTROL, CLASS_UNSELECTABLE} from '../../css.js';
 
 /**
@@ -50,6 +51,12 @@ class Geolocate extends Control {
 
     /**
      * @private
+     * @type {Modal}
+     */
+    this.errorModal_ = null;
+
+    /**
+     * @private
      * @type {boolean}
      */
     this.autoLocate =
@@ -87,16 +94,37 @@ class Geolocate extends Control {
     if (map === null) {
       return;
     }
+    this.setGeolocation_(this.autoLocate);
+  }
+
+  /**
+   * @param {boolean} startTracking Start tracking right away.
+   * @private
+   */
+  setGeolocation_(startTracking) {
     this.geolocation_ = new Geolocation({
-      projection: map.getView().getProjection(),
-      tracking: this.autoLocate,
+      projection: this.map.getView().getProjection(),
+      tracking: startTracking,
     });
     this.geolocation_.on('change:position', () => {
       const position = this.geolocation_.getPosition();
-      const view = map.getView();
+      const view = this.map.getView();
       view.setCenter(position);
       view.setZoom(this.zoomToLevel);
       this.geolocation_.setTracking(false);
+
+      if (this.errorModal_) {
+        this.map.removeControl(this.errorModal_);
+      }
+    });
+    this.geolocation_.on('error', (error) => {
+      if (!this.errorModal_) {
+        this.errorModal_ = new Modal({
+          contentText:
+            'Your system refuses geolocation, please check your system settings.',
+        });
+      }
+      this.map.addControl(this.errorModal_);
     });
   }
 
@@ -106,8 +134,10 @@ class Geolocate extends Control {
    */
   handleClick_(event) {
     event.preventDefault();
-    if (this.geolocation_) {
+    if (!this.errorModal_ && this.geolocation_) {
       this.geolocation_.setTracking(true);
+    } else {
+      this.setGeolocation_(true);
     }
   }
 }
