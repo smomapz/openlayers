@@ -285,7 +285,8 @@ class LayerSwitcher extends Control {
     input.type = type;
     input.checked = layer.getVisible();
     if (type === 'radio') {
-      input.name = 'baselayers-radiogroup';
+      input.name =
+        'baselayers-radiogroup-' + Math.random().toString(16).slice(2);
     }
 
     let handleChange_ = undefined;
