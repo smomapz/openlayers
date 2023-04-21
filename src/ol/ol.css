@@ -434,7 +434,8 @@
   font-weight: bold;
   border-radius: 4px;
   color: rgb(70, 70, 70);
-  padding: 0 0.5em 0 0.5em;
+  padding: 0 0.5em;
+  background: white;
 }
 
 .aa-Input:focus {
@@ -626,7 +627,8 @@ button.mapz-control-geotracker-button {
   font-weight: bold;
   border-radius: 4px;
   color: rgb(70, 70, 70);
-  padding: 0 0.5em 0 0.5em;
+  padding: 0 0.5em;
+  background: white;
 }
 
 .mapz-control-search input:focus {
