@@ -148,6 +148,12 @@ class LayerSwitcher extends Control {
      * @type {boolean}
      */
     this.open = options.open !== undefined ? options.open : true;
+
+    /**
+     * @private
+     * @type {string}
+     */
+    this.radioButtonUid = Math.random().toString(16).slice(2);
   }
 
   /**
@@ -286,7 +292,7 @@ class LayerSwitcher extends Control {
     input.checked = layer.getVisible();
     if (type === 'radio') {
       input.name =
-        'baselayers-radiogroup-' + Math.random().toString(16).slice(2);
+        'baselayers-radiogroup-' + this.radioButtonUid;
     }
 
     let handleChange_ = undefined;
